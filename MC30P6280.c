@@ -262,7 +262,6 @@ void user_init(void)
 void pen_pwr_on(void)
 {
 #if 1
-    // USER_TO_DO 测试时屏蔽，实际需要恢复
     DDR1 &= ~(0x01 << 4); // 输出模式
     P14D = 0;             // 输出低电平
 #endif
@@ -271,7 +270,6 @@ void pen_pwr_on(void)
 void pen_pwr_off(void)
 {
 #if 1
-    // USER_TO_DO 测试时屏蔽，实际需要恢复
     PUCON |= (0x01 << 4); // 不使能上拉
     PDCON |= (0x01 << 4); // 不使能下拉
     DDR1 |= 0x01 << 4;    // P14 输入模式
@@ -281,7 +279,6 @@ void pen_pwr_off(void)
 // 关闭所有led
 void led_all_off(void)
 {
-// USER_TO_DO 测试时屏蔽，实际需要恢复
 #if 1
     // 关闭所有LED驱动引脚的上下拉：
     // 关闭 按键扫描的上拉、LED控制的上拉
@@ -295,46 +292,46 @@ void led_all_off(void)
 #endif
 }
 
-void led1_on(void)
-{
-    // 不使用的引脚配置为输入模式，如果每次都关所有灯，再点亮指定灯，这一步可以省
+// void led1_on(void)
+// {
+//     // 不使用的引脚配置为输入模式，如果每次都关所有灯，再点亮指定灯，这一步可以省
 
-    // LED公共端配置为输出，输出低电平
-    // P10 LED 公共端
-    P1 &= ~(0x01 << 0);
-    DDR1 &= ~(0x01 << 0); // 输出模式
+//     // LED公共端配置为输出，输出低电平
+//     // P10 LED 公共端
+//     P1 &= ~(0x01 << 0);
+//     DDR1 &= ~(0x01 << 0); // 输出模式
 
-    // LED B端 配置为输出，输出高电平
-    // P11 LED B端
-    P1 |= (0x01 << 1);    // P11 输出高电平
-    DDR1 &= ~(0x01 << 1); // P11 输出模式
-}
+//     // LED B端 配置为输出，输出高电平
+//     // P11 LED B端
+//     P1 |= (0x01 << 1);    // P11 输出高电平
+//     DDR1 &= ~(0x01 << 1); // P11 输出模式
+// }
 
-void led2_on(void)
-{
-    // 不使用的引脚配置为输入模式，如果每次都关所有灯，再点亮指定灯，这一步可以省
+// void led2_on(void)
+// {
+//     // 不使用的引脚配置为输入模式，如果每次都关所有灯，再点亮指定灯，这一步可以省
 
-    // B端 输出低电平， 公共端 输出高电平
-    // P11 LED B端
-    P1 &= ~(0x01 << 1);   // P11 输出低电平
-    DDR1 &= ~(0x01 << 1); // P11 输出模式
+//     // B端 输出低电平， 公共端 输出高电平
+//     // P11 LED B端
+//     P1 &= ~(0x01 << 1);   // P11 输出低电平
+//     DDR1 &= ~(0x01 << 1); // P11 输出模式
 
-    // P10 LED 公共端
-    P1 |= (0x01 << 0);    // P10 输出高电平
-    DDR1 &= ~(0x01 << 0); // P10 输出模式
-}
+//     // P10 LED 公共端
+//     P1 |= (0x01 << 0);    // P10 输出高电平
+//     DDR1 &= ~(0x01 << 0); // P10 输出模式
+// }
 
-void led3_on(void)
-{
-    // 不使用的引脚配置为输入模式，如果每次都关所有灯，再点亮指定灯，这一步可以省
-    // A端 输出低电平，公共端 输出高电平
-    // P12 LED A端
-    P1 &= ~(0x01 << 2);   // P12 输出低电平
-    DDR1 &= ~(0x01 << 2); // P12 输出模式
-    // P10 LED 公共端
-    P1 |= (0x01 << 0);    // P10 输出高电平
-    DDR1 &= ~(0x01 << 0); // P10 输出模式
-}
+// void led3_on(void)
+// {
+//     // 不使用的引脚配置为输入模式，如果每次都关所有灯，再点亮指定灯，这一步可以省
+//     // A端 输出低电平，公共端 输出高电平
+//     // P12 LED A端
+//     P1 &= ~(0x01 << 2);   // P12 输出低电平
+//     DDR1 &= ~(0x01 << 2); // P12 输出模式
+//     // P10 LED 公共端
+//     P1 |= (0x01 << 0);    // P10 输出高电平
+//     DDR1 &= ~(0x01 << 0); // P10 输出模式
+// }
 
 void led4_on(void)
 {
@@ -477,107 +474,8 @@ void led_status_handle(void)
         led_sta_reflash_cnt = 0;
 
         if (flag_is_in_charging) {
-            // 充电时，控制指示灯跑马显示
-
-            // 如果刚进入充电，执行跑马灯动画，到对应的电压后停止
-            if (flag_is_charge_begin) {
-                if (bat_lev < BAT_LEV_3V3) {
-                    /*
-                        电池电量 小于 BAT_LEV_3V3 ，退出刚开始充电的动画
-                        准备让 第一格 指示灯闪烁
-                    */
-                    flag_is_charge_begin = 0;
-                } else if (bat_lev >= BAT_LEV_3V3 && charge_anim_phase == 0) {
-                    /*
-                        电池电量 大于等于 BAT_LEV_3V3
-                        让 第一格 指示灯常亮
-                    */
-                    flag_led_1_on = 1;
-                    charge_anim_phase = 1;
-                } else if (bat_lev >= BAT_LEV_3V6 && charge_anim_phase == 1) {
-                    /*
-                        电池电量 大于等于 BAT_LEV_3V6
-                        让 第二格 指示灯常亮
-                    */
-                    flag_led_2_on = 1;
-                    charge_anim_phase = 2;
-                } else if (bat_lev >= BAT_LEV_4V0 && charge_anim_phase == 2) {
-                    /*
-                        电池电量 大于等于 BAT_LEV_4V0
-                        让 第三格 指示灯常亮
-                    */
-                    flag_led_3_on = 1;
-                    charge_anim_phase = 3;
-                } else if (bat_lev >= BAT_LEV_4V2 && charge_anim_phase == 3) {
-                    // 电池电量 大于等于 BAT_LEV_4V2
-                    flag_led_4_on = 1;
-                    charge_anim_phase = 4;
-                } else {
-                    flag_is_charge_begin = 0; // 退出刚开始充电的动画
-                    /*
-                        退出刚开始充电的动画之后，需要立即进入对应的处理
-                        这里给计数值恢复成 500 ms
-                    */
-                    led_sta_reflash_cnt = (u8)(500 / 10);
-                }
-            } else {
-                // 如果不是刚进入充电，而是正在充电，根据电池电量档位来控制指示灯闪烁
-                switch (bat_lev) {
-                case BAT_LEV_4V2:
-                case BAT_LEV_4V0: // 4.0V ~ 4.2V，用第四格指示灯
-                    flag_led_4_on = ~flag_led_4_on;
-                    break;
-                case BAT_LEV_3V6: // 3.6V ~ 4.0V，用第三格指示灯
-                    flag_led_3_on = ~flag_led_3_on;
-                    break;
-                case BAT_LEV_3V3: // 3.3V ~ 3.6V，用第二格指示灯
-                    flag_led_2_on = ~flag_led_2_on;
-                    break;
-                // default:
-                case BAT_LEV_3V2:
-                case BAT_LEV_3V0:
-                case BAT_LEV_2V9: // 3.3V 以下的电压，用 第一格 指示灯
-                    flag_led_1_on = ~flag_led_1_on;
-                    break;
-                }
-
-                if (bat_lev >= BAT_LEV_3V3) {
-                    flag_led_1_on = 1; // 指示灯常亮，不闪烁
-                }
-
-                if (bat_lev >= BAT_LEV_3V6) {
-                    flag_led_2_on = 1; // 指示灯常亮，不闪烁
-                }
-
-                if (bat_lev >= BAT_LEV_4V0) {
-                    flag_led_3_on = 1; // 指示灯常亮，不闪烁
-                }
-
-                //                 if (bat_lev >= BAT_LEV_4V2) {
-                //                     // 注意： 这里只有 500ms 才进入一次
-
-                // #if 0
-                //                     // 充电到4.2V，就让第四格指示灯常亮：
-                //                     flag_led_4_on = 1; // 指示灯常亮，不闪烁
-                // #else
-
-                //                     if (charge_fully_cnt >= (u16)(((u32)6 * 60 * 1000) / 10)) {
-                //                         flag_led_4_on = 1;
-                //                     }
-
-                //                     // // 充电到4.2V再过一段时间，才让第四格指示灯常亮：
-                //                     // if (charge_fully_cnt < (u16)(((u32)6 * 60 * 1000) / 10)) {
-                //                     // // if (charge_fully_cnt < 36000UL) {
-                //                     //     // 只在测试时使用：
-                //                     //     // if (charge_fully_cnt < (u16)(((u32)30 * 1000) /
-                //                     10)) {
-                //                     //     charge_fully_cnt++;
-                //                     // } else {
-                //                     //     flag_led_4_on = 1;
-                //                     // }
-                // #endif
-                //                 }
-            }
+            // 充电时，控制指示灯闪烁
+            flag_led_4_on = ~flag_led_4_on;
         } else if (flag_is_dev_working) {
             // 放电时，控制指示灯常亮
 
@@ -587,45 +485,21 @@ void led_status_handle(void)
                 flag1.byte &= xx;这种方式来给标志位赋值，
                 每个语句块可以节省1个字节空间
             */
-            if (bat_lev >= BAT_LEV_4V0) {
+            if (bat_lev >= BAT_LEV_3V2) {
                 flag_led_4_on = 1;
-                flag_led_3_on = 1;
-                flag_led_2_on = 1;
-                flag_led_1_on = 1;
-            } else if (bat_lev >= BAT_LEV_3V6) {
-                flag_led_4_on = 0;
-                flag_led_3_on = 1;
-                flag_led_2_on = 1;
-                flag_led_1_on = 1;
-            } else if (bat_lev >= BAT_LEV_3V3) {
-                flag_led_4_on = 0;
-                flag_led_3_on = 0;
-                flag_led_2_on = 1;
-                flag_led_1_on = 1;
-            } else if (bat_lev >= BAT_LEV_3V2) {
-                flag_led_4_on = 0;
-                flag_led_3_on = 0;
-                flag_led_2_on = 0;
-                flag_led_1_on = 1;
             } else {
                 // 目前，小于 3.2V 的电量，指示灯闪烁
-                flag_led_4_on = 0;
-                flag_led_3_on = 0;
-                flag_led_2_on = 0;
                 // 低电量，指示灯闪烁
-                flag_led_1_on = ~flag_led_1_on;
+                flag_led_4_on = ~flag_led_4_on;
             }
         } else {
             // 不在充电，设备也没有在工作，关闭所有指示灯
-            flag_led_1_on = 0;
-            flag_led_2_on = 0;
-            flag_led_3_on = 0;
             flag_led_4_on = 0;
         }
     }
 
-    if (flag_is_in_charging && 0 == flag_is_charge_begin) {
-        // 正在充电，并且已经过了充电的开始动画
+    if (flag_is_in_charging) {
+        // 正在充电
         if (bat_lev >= BAT_LEV_4V2) {
             if (charge_fully_cnt < (u16)(((u32)6 * 60 * 1000) / 10)) {
                 // 只在测试时使用：
@@ -642,7 +516,7 @@ void led_status_handle(void)
 // 目前暂定在 100us 定时器中断里面调用
 void led_refresh(void)
 {
-    static volatile u8 sta = 0;
+    // static volatile u8 sta = 0;
 
     if (0 == flag_is_led_show_enable) {
         return;
@@ -650,34 +524,8 @@ void led_refresh(void)
 
     led_all_off();
 
-    switch (sta) {
-    case 0:
-        if (flag_led_1_on) {
-            led1_on();
-        }
-        sta = 1;
-        break;
-    case 1:
-        if (flag_led_2_on) {
-            led2_on();
-        }
-        sta = 2;
-        break;
-    case 2:
-        if (flag_led_3_on) {
-            led3_on();
-        }
-        sta = 3;
-        break;
-    case 3:
-        if (flag_led_4_on) {
-            led4_on();
-        }
-        sta = 0;
-        break;
-
-    default:
-        break;
+    if (flag_led_4_on) {
+        led4_on();
     }
 }
 
@@ -877,7 +725,6 @@ void int_isr(void) __interrupt
                         if (discharge_cnt >= 100) {
                             discharge_cnt = 0;
                             flag_is_in_charging = 0;
-                            // flag_is_first_fully_charge = 0;
                         }
                     }
                 }

@@ -200,10 +200,7 @@ extern volatile bit_flag_t flag1;
 
 // 是否使能led指示灯显示
 #define flag_is_led_show_enable flag2.bits.bit0 
-
-// USER_TO_DO tmp
-// 是否有一次检测到充满电
-// #define flag_is_first_fully_charge flag2.bits.bit1
+ 
 
 
 #include "timer0.h"
