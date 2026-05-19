@@ -410,40 +410,37 @@ void key_scan(void)
             press_cnt = 0; // 重置按键按下时间计数
             click_cnt++;
         }
-    }
-    // else if (cur_key_id != KEY_ID_NONE)
-    else // cur_key_id == last_key_id
-    {
+
+        if (click_cnt == 2) {
+            // click_cnt == 2 // 双击
+            // 客户说开关机的速度太慢，改成按键双击的第二下刚按下不久，就处理该事件
+            flag_is_dev_working = ~flag_is_dev_working;
+
+            if (flag_is_dev_working) {
+                pen_pwr_on();
+                // 让led指示灯立即更新状态
+                led_sta_reflash_cnt = (u8)(500 / 10);
+            } else {
+                // 通过按键关机之后，立即关闭指示灯，不等led刷新
+                pen_pwr_off();
+                flag_led_1_on = 0;
+                flag_led_2_on = 0;
+                flag_led_3_on = 0;
+                flag_led_4_on = 0;
+            }
+
+            // 处理完成后，清空连击的次数
+            click_cnt = 0;
+        }
+    } else {
         /*
             cur_key_id == last_key_id &&
             cur_key_id == KEY_ID_NONE，说明按键已经松开
         */
         if (cur_key_id == KEY_ID_NONE) { // 没有按键按下，说明松手
             if (click_cnt > 0) {
-                if (click_delay_cnt >= KEY_CLICK_DELAY_TIME) {
-                    if (click_cnt == 1) {
-                        // 单击
-                        // P14D = ~P14D; // USER_TO_DO 测试时使用
-                    } else {
-                        // click_cnt == 2 // 双击
-                        flag_is_dev_working = ~flag_is_dev_working;
-
-                        // P14D = ~P14D; // USER_TO_DO 测试时使用
-
-                        if (flag_is_dev_working) {
-                            pen_pwr_on();
-                            // 让led指示灯立即更新状态
-                            led_sta_reflash_cnt = (u8)(500 / 10);
-                        } else {
-                            // 通过按键关机之后，立即关闭指示灯，不等led刷新
-                            pen_pwr_off();
-                            flag_led_1_on = 0;
-                            flag_led_2_on = 0;
-                            flag_led_3_on = 0;
-                            flag_led_4_on = 0;
-                        }
-                    }
-
+                if (click_delay_cnt >= KEY_CLICK_DELAY_TIME) { 
+                    // 如果超过了连击的等待时间，直接
                     click_cnt = 0; // 处理完事件后,清空连击的次数
                 } else {
                     if (click_delay_cnt < 255) {
@@ -627,7 +624,7 @@ void main(void)
                 在 timer0 中断内调用了 lvd_scan()，这里要等待一段时间，
                 等 tmp_bat_lev 的值更新
             */
-            delay_ms(100);
+            delay_ms(10);
             flag_is_led_show_enable = 1; // 确保电池电量更新后，再使能led显示
 
             // 没有在充电并且低电量，重新回到低功耗
@@ -688,44 +685,44 @@ void int_isr(void) __interrupt
 
                 // 充电检测
                 {
-                    static volatile u8 charge_cnt = 0;
-                    static volatile u8 discharge_cnt = 0;
+                    // static volatile u8 charge_cnt = 0;
+                    // static volatile u8 discharge_cnt = 0;
                     if (CHARGE_PIN) {
-                        discharge_cnt = 0;
-                        charge_cnt++;
-                        if (charge_cnt >= 10) {
-                            charge_cnt = 0;
-                            if (0 == flag_is_in_charging) {
-                                /*
-                                    刚进入充电，需要将记录的电池电量改为最低档，
-                                    让它之后升上去
-                                */
-                                tmp_bat_lev = BAT_LEV_2V9;
-                                bat_lev = BAT_LEV_2V9;
-                                pen_pwr_off(); // 断开笔头的供电
-                                // led_all_off(); // 关闭所有指示灯，准备充电动画
-                                flag_led_1_on = 0;
-                                flag_led_2_on = 0;
-                                flag_led_3_on = 0;
-                                flag_led_4_on = 0;
-                                flag_is_dev_working = 0; // 表示设备关闭
-                                // 表示刚进入充电
-                                flag_is_charge_begin = 1;
-                                charge_anim_phase = 0;
-                                charge_fully_cnt = 0; // 刚进入充电，清空充满电的计数值
-                                flag_is_in_charging = 1;
-                            }
+                        // discharge_cnt = 0;
+                        // charge_cnt++;
+                        // if (charge_cnt >= 10) {
+                        //     charge_cnt = 0;
+                        if (0 == flag_is_in_charging) {
+                            /*
+                                刚进入充电，需要将记录的电池电量改为最低档，
+                                让它之后升上去
+                            */
+                            tmp_bat_lev = BAT_LEV_2V9;
+                            bat_lev = BAT_LEV_2V9;
+                            pen_pwr_off(); // 断开笔头的供电
+                            // led_all_off(); // 关闭所有指示灯，准备充电动画
+                            flag_led_1_on = 0;
+                            flag_led_2_on = 0;
+                            flag_led_3_on = 0;
+                            flag_led_4_on = 0;
+                            flag_is_dev_working = 0; // 表示设备关闭
+                            // 表示刚进入充电
+                            flag_is_charge_begin = 1;
+                            charge_anim_phase = 0;
+                            charge_fully_cnt = 0; // 刚进入充电，清空充满电的计数值
+                            flag_is_in_charging = 1;
                         }
+                        // }
 
                         // DDR1 &= ~(0x01 << 4);
                         // P14D = ~P14D;
                     } else {
-                        charge_cnt = 0;
-                        discharge_cnt++;
-                        if (discharge_cnt >= 100) {
-                            discharge_cnt = 0;
-                            flag_is_in_charging = 0;
-                        }
+                        // charge_cnt = 0;
+                        // discharge_cnt++;
+                        // if (discharge_cnt >= 100) {
+                        //     discharge_cnt = 0;
+                        flag_is_in_charging = 0;
+                        // }
                     }
                 }
 
@@ -741,7 +738,6 @@ void int_isr(void) __interrupt
             }
         }
 
-        lvd_scan();
         // USER_TO_DO 如果还有多的程序空间，要给这里加上滤波
         {
             if (flag_is_dev_working) {
@@ -766,6 +762,15 @@ void int_isr(void) __interrupt
 // USER_TO_DO 测试时屏蔽
 #if 1
         led_refresh();
+
+        {
+            static volatile u8 cnt = 0;
+            cnt++;
+            if (cnt >= 3) {
+                cnt = 0;
+                lvd_scan();
+            }
+        }
 
         // 如果检测到的振动传感器传来的信号，当前检测脚的电平跟上次的不一样
         // if ((VIBRATION_SENSOR_PIN && last_vibration_sensor_lev == 0) ||
