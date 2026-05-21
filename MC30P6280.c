@@ -439,7 +439,7 @@ void key_scan(void)
         */
         if (cur_key_id == KEY_ID_NONE) { // 没有按键按下，说明松手
             if (click_cnt > 0) {
-                if (click_delay_cnt >= KEY_CLICK_DELAY_TIME) { 
+                if (click_delay_cnt >= KEY_CLICK_DELAY_TIME) {
                     // 如果超过了连击的等待时间，直接
                     click_cnt = 0; // 处理完事件后,清空连击的次数
                 } else {
@@ -470,10 +470,31 @@ void led_status_handle(void)
     if (led_sta_reflash_cnt >= (u8)(500 / 10)) {
         led_sta_reflash_cnt = 0;
 
-        if (flag_is_in_charging) {
-            // 充电时，控制指示灯闪烁
-            flag_led_4_on = ~flag_led_4_on;
-        } else if (flag_is_dev_working) {
+        // if (flag_is_in_charging) {
+        //     // 充电时，控制指示灯闪烁
+        //     flag_led_4_on = ~flag_led_4_on;
+        // } else if (flag_is_dev_working) {
+        //     // 放电时，控制指示灯常亮
+
+        //     /*
+        //         USER_TO_DO
+        //         如果这里采用 flag1.byte |= xx;
+        //         flag1.byte &= xx;这种方式来给标志位赋值，
+        //         每个语句块可以节省1个字节空间
+        //     */
+        //     if (bat_lev >= BAT_LEV_3V2) {
+        //         flag_led_4_on = 1;
+        //     } else {
+        //         // 目前，小于 3.2V 的电量，指示灯闪烁
+        //         // 低电量，指示灯闪烁
+        //         flag_led_4_on = ~flag_led_4_on;
+        //     }
+        // } else {
+        //     // 不在充电，设备也没有在工作，关闭所有指示灯
+        //     flag_led_4_on = 0;
+        // }
+
+        if (flag_is_dev_working) {
             // 放电时，控制指示灯常亮
 
             /*
@@ -490,23 +511,23 @@ void led_status_handle(void)
                 flag_led_4_on = ~flag_led_4_on;
             }
         } else {
-            // 不在充电，设备也没有在工作，关闭所有指示灯
+            // 设备没有在工作，关闭所有指示灯
             flag_led_4_on = 0;
         }
     }
 
-    if (flag_is_in_charging) {
-        // 正在充电
-        if (bat_lev >= BAT_LEV_4V2) {
-            if (charge_fully_cnt < (u16)(((u32)6 * 60 * 1000) / 10)) {
-                // 只在测试时使用：
-                // if (charge_fully_cnt < (u16)(((u32)30 * 1000) / 10)) {
-                charge_fully_cnt++;
-            } else {
-                flag_led_4_on = 1;
-            }
-        }
-    }
+    // if (flag_is_in_charging) {
+    //     // 正在充电
+    //     if (bat_lev >= BAT_LEV_4V2) {
+    //         if (charge_fully_cnt < (u16)(((u32)6 * 60 * 1000) / 10)) {
+    //             // 只在测试时使用：
+    //             // if (charge_fully_cnt < (u16)(((u32)30 * 1000) / 10)) {
+    //             charge_fully_cnt++;
+    //         } else {
+    //             flag_led_4_on = 1;
+    //         }
+    //     }
+    // }
 }
 
 // 根据电池电量和设备状态，来控制电池电量指示灯
@@ -624,6 +645,7 @@ void main(void)
                 在 timer0 中断内调用了 lvd_scan()，这里要等待一段时间，
                 等 tmp_bat_lev 的值更新
             */
+            // delay_ms(5);
             delay_ms(10);
             flag_is_led_show_enable = 1; // 确保电池电量更新后，再使能led显示
 

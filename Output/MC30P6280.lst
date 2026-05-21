@@ -1,5 +1,5 @@
 gplink-2.2.37 (Jan 22 2024)
-Listing File Generated: 2026-5-18  17:49:31
+Listing File Generated: 2026-5-21  18:48:24
  
  
 Address  Value    Disassembly              Source
@@ -137,8 +137,8 @@ Address  Value    Disassembly              Source
                                            r0x101F	res	1
                                            r0x1021	res	1
                                            r0x1020	res	1
-                                           _int_isr_cnt_196608_96	res	1
-                                           _int_isr_cnt_196608_115	res	1
+                                           _int_isr_cnt_196608_91	res	1
+                                           _int_isr_cnt_196608_110	res	1
                                            ;--------------------------------------------------------
                                            ; initialized data
                                            ;--------------------------------------------------------
@@ -376,61 +376,61 @@ Address  Value    Disassembly              Source
                                            ;; Starting pCode block
                                            _int_isr	;Function start
                                            ; 0 exit points
-                                           ;	.line	651; "MC30P6280.c"	__endasm;
+                                           ;	.line	673; "MC30P6280.c"	__endasm;
                                            	;
 000008   15aa     movra   0x2a             	movra	_abuf;
 000009   1103     swapar  0x3              	swapar	_STATUS;
 00000a   15ab     movra   0x2b             	movra	_statusbuf;
                                            	
-                                           ;	.line	653; "MC30P6280.c"	if ((T0IF) && (T0IE)) {
+                                           ;	.line	675; "MC30P6280.c"	if ((T0IF) && (T0IE)) {
 00000b   300f     jbset   0xf, 0           	JBSET	_INTFbits,0
-00000c   286e     goto    0x6e             	GOTO	_00482_DS_
+00000c   286e     goto    0x6e             	GOTO	_00439_DS_
 00000d   300e     jbset   0xe, 0           	JBSET	_INTEbits,0
-00000e   286e     goto    0x6e             	GOTO	_00482_DS_
-                                           ;	.line	654; "MC30P6280.c"	T0IF = 0;
+00000e   286e     goto    0x6e             	GOTO	_00439_DS_
+                                           ;	.line	676; "MC30P6280.c"	T0IF = 0;
 00000f   3c0f     bclr    0xf, 0           	BCLR	_INTFbits,0
-                                           ;	.line	655; "MC30P6280.c"	T0CNT = (u8)(255 - 125); // T0 目前1ms产生一次中断
+                                           ;	.line	677; "MC30P6280.c"	T0CNT = (u8)(255 - 125); // T0 目前1ms产生一次中断
 000010   0b82     movai   0x82             	MOVAI	0x82
 000011   1581     movra   0x1              	MOVRA	_T0CNT
-                                           ;	.line	659; "MC30P6280.c"	cnt++;
-000012   19a2     incr    0x22             	INCR	_int_isr_cnt_196608_96
+                                           ;	.line	681; "MC30P6280.c"	cnt++;
+000012   19a2     incr    0x22             	INCR	_int_isr_cnt_196608_91
                                            ;;unsigned compare: left < lit(0xA=10), size=1
-                                           ;	.line	660; "MC30P6280.c"	if (cnt >= 10) {
+                                           ;	.line	682; "MC30P6280.c"	if (cnt >= 10) {
 000013   0b0a     movai   0xa              	MOVAI	0x0a
-000014   1222     rsubar  0x22             	RSUBAR	_int_isr_cnt_196608_96
+000014   1222     rsubar  0x22             	RSUBAR	_int_isr_cnt_196608_91
 000015   3003     jbset   0x3, 0           	JBSET	STATUS,0
-000016   285f     goto    0x5f             	GOTO	_00473_DS_
+000016   285f     goto    0x5f             	GOTO	_00430_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
-                                           ;	.line	662; "MC30P6280.c"	cnt = 0;
-000017   1da2     clrr    0x22             	CLRR	_int_isr_cnt_196608_96
-                                           ;	.line	665; "MC30P6280.c"	key_scan();
-000018   2111     call    0x111            	CALL	_key_scan
-                                           ;	.line	667; "MC30P6280.c"	led_status_handle();
+                                           ;	.line	684; "MC30P6280.c"	cnt = 0;
+000017   1da2     clrr    0x22             	CLRR	_int_isr_cnt_196608_91
+                                           ;	.line	687; "MC30P6280.c"	key_scan();
+000018   20f1     call    0xf1             	CALL	_key_scan
+                                           ;	.line	689; "MC30P6280.c"	led_status_handle();
 000019   20d6     call    0xd6             	CALL	_led_status_handle
-                                           ;	.line	669; "MC30P6280.c"	if (flag_is_dev_working) {
+                                           ;	.line	691; "MC30P6280.c"	if (flag_is_dev_working) {
 00001a   332c     jbset   0x2c, 0x6        	JBSET	_flag1,6
-00001b   2834     goto    0x34             	GOTO	_00456_DS_
+00001b   2834     goto    0x34             	GOTO	_00413_DS_
                                            ;;unsigned compare: left < lit(0x2BF20=180000), size=4
-                                           ;	.line	671; "MC30P6280.c"	if (pwr_off_cnt < ((u32)30 * 60 * 1000 / 10)) {
+                                           ;	.line	693; "MC30P6280.c"	if (pwr_off_cnt < ((u32)30 * 60 * 1000 / 10)) {
 00001c   0b00     movai   0                	MOVAI	0x00
 00001d   1227     rsubar  0x27             	RSUBAR	(_pwr_off_cnt + 3)
 00001e   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
-00001f   282a     goto    0x2a             	GOTO	_00564_DS_
+00001f   282a     goto    0x2a             	GOTO	_00521_DS_
 000020   0b02     movai   0x2              	MOVAI	0x02
 000021   1226     rsubar  0x26             	RSUBAR	(_pwr_off_cnt + 2)
 000022   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
-000023   282a     goto    0x2a             	GOTO	_00564_DS_
+000023   282a     goto    0x2a             	GOTO	_00521_DS_
 000024   0bbf     movai   0xbf             	MOVAI	0xbf
 000025   1225     rsubar  0x25             	RSUBAR	(_pwr_off_cnt + 1)
 000026   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
-000027   282a     goto    0x2a             	GOTO	_00564_DS_
+000027   282a     goto    0x2a             	GOTO	_00521_DS_
 000028   0b20     movai   0x20             	MOVAI	0x20
 000029   1224     rsubar  0x24             	RSUBAR	_pwr_off_cnt
-                                           _00564_DS_
+                                           _00521_DS_
 00002a   3403     jbclr   0x3, 0           	JBCLR	STATUS,0
-00002b   2838     goto    0x38             	GOTO	_00457_DS_
+00002b   2838     goto    0x38             	GOTO	_00414_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
-                                           ;	.line	672; "MC30P6280.c"	pwr_off_cnt++;
+                                           ;	.line	694; "MC30P6280.c"	pwr_off_cnt++;
 00002c   19a4     incr    0x24             	INCR	_pwr_off_cnt
 00002d   3503     jbclr   0x3, 0x2         	JBCLR	STATUS,2
 00002e   19a5     incr    0x25             	INCR	(_pwr_off_cnt + 1)
@@ -438,131 +438,131 @@ Address  Value    Disassembly              Source
 000030   19a6     incr    0x26             	INCR	(_pwr_off_cnt + 2)
 000031   3503     jbclr   0x3, 0x2         	JBCLR	STATUS,2
 000032   19a7     incr    0x27             	INCR	(_pwr_off_cnt + 3)
-000033   2838     goto    0x38             	GOTO	_00457_DS_
-                                           _00456_DS_
-                                           ;	.line	676; "MC30P6280.c"	pwr_off_cnt = 0;
+000033   2838     goto    0x38             	GOTO	_00414_DS_
+                                           _00413_DS_
+                                           ;	.line	698; "MC30P6280.c"	pwr_off_cnt = 0;
 000034   1da4     clrr    0x24             	CLRR	_pwr_off_cnt
 000035   1da5     clrr    0x25             	CLRR	(_pwr_off_cnt + 1)
 000036   1da6     clrr    0x26             	CLRR	(_pwr_off_cnt + 2)
 000037   1da7     clrr    0x27             	CLRR	(_pwr_off_cnt + 3)
-                                           _00457_DS_
-                                           ;	.line	680; "MC30P6280.c"	if (flag_is_dev_working && bat_lev == BAT_LEV_2V9) {
+                                           _00414_DS_
+                                           ;	.line	702; "MC30P6280.c"	if (flag_is_dev_working && bat_lev == BAT_LEV_2V9) {
 000038   332c     jbset   0x2c, 0x6        	JBSET	_flag1,6
-000039   2841     goto    0x41             	GOTO	_00459_DS_
+000039   2841     goto    0x41             	GOTO	_00416_DS_
 00003a   0b00     movai   0                	MOVAI	0x00
 00003b   1730     orar    0x30             	ORAR	_bat_lev
 00003c   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
-00003d   2841     goto    0x41             	GOTO	_00459_DS_
-                                           ;	.line	681; "MC30P6280.c"	pen_pwr_off();           // 断开笔头的供电
-00003e   218b     call    0x18b            	CALL	_pen_pwr_off
-                                           ;	.line	682; "MC30P6280.c"	led_all_off();           // 关闭所有指示灯
-00003f   2186     call    0x186            	CALL	_led_all_off
-                                           ;	.line	683; "MC30P6280.c"	flag_is_dev_working = 0; // 表示设备关闭
+00003d   2841     goto    0x41             	GOTO	_00416_DS_
+                                           ;	.line	703; "MC30P6280.c"	pen_pwr_off();           // 断开笔头的供电
+00003e   216b     call    0x16b            	CALL	_pen_pwr_off
+                                           ;	.line	704; "MC30P6280.c"	led_all_off();           // 关闭所有指示灯
+00003f   2166     call    0x166            	CALL	_led_all_off
+                                           ;	.line	705; "MC30P6280.c"	flag_is_dev_working = 0; // 表示设备关闭
 000040   3f2c     bclr    0x2c, 0x6        	BCLR	_flag1,6
-                                           _00459_DS_
-                                           ;	.line	690; "MC30P6280.c"	if (CHARGE_PIN) {
+                                           _00416_DS_
+                                           ;	.line	712; "MC30P6280.c"	if (CHARGE_PIN) {
 000041   3186     jbset   0x6, 0x3         	JBSET	_P1bits,3
-000042   2853     goto    0x53             	GOTO	_00464_DS_
-                                           ;	.line	695; "MC30P6280.c"	if (0 == flag_is_in_charging) {
+000042   2853     goto    0x53             	GOTO	_00421_DS_
+                                           ;	.line	717; "MC30P6280.c"	if (0 == flag_is_in_charging) {
 000043   342c     jbclr   0x2c, 0          	JBCLR	_flag1,0
-000044   2854     goto    0x54             	GOTO	_00465_DS_
-                                           ;	.line	700; "MC30P6280.c"	tmp_bat_lev = BAT_LEV_2V9;
+000044   2854     goto    0x54             	GOTO	_00422_DS_
+                                           ;	.line	722; "MC30P6280.c"	tmp_bat_lev = BAT_LEV_2V9;
 000045   1daf     clrr    0x2f             	CLRR	_tmp_bat_lev
-                                           ;	.line	701; "MC30P6280.c"	bat_lev = BAT_LEV_2V9;
+                                           ;	.line	723; "MC30P6280.c"	bat_lev = BAT_LEV_2V9;
 000046   1db0     clrr    0x30             	CLRR	_bat_lev
-                                           ;	.line	702; "MC30P6280.c"	pen_pwr_off(); // 断开笔头的供电
-000047   218b     call    0x18b            	CALL	_pen_pwr_off
-                                           ;	.line	704; "MC30P6280.c"	flag_led_1_on = 0;
+                                           ;	.line	724; "MC30P6280.c"	pen_pwr_off(); // 断开笔头的供电
+000047   216b     call    0x16b            	CALL	_pen_pwr_off
+                                           ;	.line	726; "MC30P6280.c"	flag_led_1_on = 0;
 000048   3d2c     bclr    0x2c, 0x2        	BCLR	_flag1,2
-                                           ;	.line	705; "MC30P6280.c"	flag_led_2_on = 0;
+                                           ;	.line	727; "MC30P6280.c"	flag_led_2_on = 0;
 000049   3dac     bclr    0x2c, 0x3        	BCLR	_flag1,3
-                                           ;	.line	706; "MC30P6280.c"	flag_led_3_on = 0;
+                                           ;	.line	728; "MC30P6280.c"	flag_led_3_on = 0;
 00004a   3e2c     bclr    0x2c, 0x4        	BCLR	_flag1,4
-                                           ;	.line	707; "MC30P6280.c"	flag_led_4_on = 0;
+                                           ;	.line	729; "MC30P6280.c"	flag_led_4_on = 0;
 00004b   3eac     bclr    0x2c, 0x5        	BCLR	_flag1,5
-                                           ;	.line	708; "MC30P6280.c"	flag_is_dev_working = 0; // 表示设备关闭
+                                           ;	.line	730; "MC30P6280.c"	flag_is_dev_working = 0; // 表示设备关闭
 00004c   3f2c     bclr    0x2c, 0x6        	BCLR	_flag1,6
-                                           ;	.line	710; "MC30P6280.c"	flag_is_charge_begin = 1;
+                                           ;	.line	732; "MC30P6280.c"	flag_is_charge_begin = 1;
 00004d   38ac     bset    0x2c, 0x1        	BSET	_flag1,1
-                                           ;	.line	711; "MC30P6280.c"	charge_anim_phase = 0;
+                                           ;	.line	733; "MC30P6280.c"	charge_anim_phase = 0;
 00004e   1db2     clrr    0x32             	CLRR	_charge_anim_phase
-                                           ;	.line	712; "MC30P6280.c"	charge_fully_cnt = 0; // 刚进入充电，清空充满电的计数值
+                                           ;	.line	734; "MC30P6280.c"	charge_fully_cnt = 0; // 刚进入充电，清空充满电的计数值
 00004f   1da8     clrr    0x28             	CLRR	_charge_fully_cnt
 000050   1da9     clrr    0x29             	CLRR	(_charge_fully_cnt + 1)
-                                           ;	.line	713; "MC30P6280.c"	flag_is_in_charging = 1;
+                                           ;	.line	735; "MC30P6280.c"	flag_is_in_charging = 1;
 000051   382c     bset    0x2c, 0          	BSET	_flag1,0
-000052   2854     goto    0x54             	GOTO	_00465_DS_
-                                           _00464_DS_
-                                           ;	.line	724; "MC30P6280.c"	flag_is_in_charging = 0;
+000052   2854     goto    0x54             	GOTO	_00422_DS_
+                                           _00421_DS_
+                                           ;	.line	746; "MC30P6280.c"	flag_is_in_charging = 0;
 000053   3c2c     bclr    0x2c, 0          	BCLR	_flag1,0
-                                           _00465_DS_
-                                           ;	.line	731; "MC30P6280.c"	if ((CHARGE_PIN == 0) && (flag_is_dev_working == 0)) {
+                                           _00422_DS_
+                                           ;	.line	753; "MC30P6280.c"	if ((CHARGE_PIN == 0) && (flag_is_dev_working == 0)) {
 000054   3586     jbclr   0x6, 0x3         	JBCLR	_P1bits,3
-000055   285e     goto    0x5e             	GOTO	_00469_DS_
+000055   285e     goto    0x5e             	GOTO	_00426_DS_
 000056   372c     jbclr   0x2c, 0x6        	JBCLR	_flag1,6
-000057   285e     goto    0x5e             	GOTO	_00469_DS_
+000057   285e     goto    0x5e             	GOTO	_00426_DS_
                                            ;;unsigned compare: left < lit(0xFF=255), size=1
-                                           ;	.line	732; "MC30P6280.c"	if (into_low_power_cnt < 255) {
+                                           ;	.line	754; "MC30P6280.c"	if (into_low_power_cnt < 255) {
 000058   0bff     movai   0xff             	MOVAI	0xff
 000059   1231     rsubar  0x31             	RSUBAR	_into_low_power_cnt
 00005a   3403     jbclr   0x3, 0           	JBCLR	STATUS,0
-00005b   285f     goto    0x5f             	GOTO	_00473_DS_
+00005b   285f     goto    0x5f             	GOTO	_00430_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
-                                           ;	.line	733; "MC30P6280.c"	into_low_power_cnt++;
+                                           ;	.line	755; "MC30P6280.c"	into_low_power_cnt++;
 00005c   19b1     incr    0x31             	INCR	_into_low_power_cnt
-00005d   285f     goto    0x5f             	GOTO	_00473_DS_
-                                           _00469_DS_
-                                           ;	.line	736; "MC30P6280.c"	into_low_power_cnt = 0;
+00005d   285f     goto    0x5f             	GOTO	_00430_DS_
+                                           _00426_DS_
+                                           ;	.line	758; "MC30P6280.c"	into_low_power_cnt = 0;
 00005e   1db1     clrr    0x31             	CLRR	_into_low_power_cnt
-                                           _00473_DS_
-                                           ;	.line	743; "MC30P6280.c"	if (flag_is_dev_working) {
+                                           _00430_DS_
+                                           ;	.line	765; "MC30P6280.c"	if (flag_is_dev_working) {
 00005f   332c     jbset   0x2c, 0x6        	JBSET	_flag1,6
-000060   2868     goto    0x68             	GOTO	_00479_DS_
-                                           ;	.line	745; "MC30P6280.c"	if (bat_lev >= tmp_bat_lev) {
+000060   2868     goto    0x68             	GOTO	_00436_DS_
+                                           ;	.line	767; "MC30P6280.c"	if (bat_lev >= tmp_bat_lev) {
 000061   162f     movar   0x2f             	MOVAR	_tmp_bat_lev
 000062   1230     rsubar  0x30             	RSUBAR	_bat_lev
 000063   3003     jbset   0x3, 0           	JBSET	STATUS,0
-000064   286e     goto    0x6e             	GOTO	_00482_DS_
+000064   286e     goto    0x6e             	GOTO	_00439_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
-                                           ;	.line	746; "MC30P6280.c"	bat_lev = tmp_bat_lev;
+                                           ;	.line	768; "MC30P6280.c"	bat_lev = tmp_bat_lev;
 000065   162f     movar   0x2f             	MOVAR	_tmp_bat_lev
 000066   15b0     movra   0x30             	MOVRA	_bat_lev
-000067   286e     goto    0x6e             	GOTO	_00482_DS_
-                                           _00479_DS_
-                                           ;	.line	751; "MC30P6280.c"	if (bat_lev <= tmp_bat_lev) {
+000067   286e     goto    0x6e             	GOTO	_00439_DS_
+                                           _00436_DS_
+                                           ;	.line	773; "MC30P6280.c"	if (bat_lev <= tmp_bat_lev) {
 000068   1630     movar   0x30             	MOVAR	_bat_lev
 000069   122f     rsubar  0x2f             	RSUBAR	_tmp_bat_lev
 00006a   3003     jbset   0x3, 0           	JBSET	STATUS,0
-00006b   286e     goto    0x6e             	GOTO	_00482_DS_
+00006b   286e     goto    0x6e             	GOTO	_00439_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
-                                           ;	.line	752; "MC30P6280.c"	bat_lev = tmp_bat_lev;
+                                           ;	.line	774; "MC30P6280.c"	bat_lev = tmp_bat_lev;
 00006c   162f     movar   0x2f             	MOVAR	_tmp_bat_lev
 00006d   15b0     movra   0x30             	MOVRA	_bat_lev
-                                           _00482_DS_
-                                           ;	.line	759; "MC30P6280.c"	if ((T1IF) && (T1IE)) {
+                                           _00439_DS_
+                                           ;	.line	781; "MC30P6280.c"	if ((T1IF) && (T1IE)) {
 00006e   304b     jbset   0x4b, 0          	JBSET	_TMRCRbits,0
-00006f   287b     goto    0x7b             	GOTO	_00487_DS_
+00006f   287b     goto    0x7b             	GOTO	_00444_DS_
 000070   30cb     jbset   0x4b, 0x1        	JBSET	_TMRCRbits,1
-000071   287b     goto    0x7b             	GOTO	_00487_DS_
-                                           ;	.line	760; "MC30P6280.c"	T1IF = 0;
+000071   287b     goto    0x7b             	GOTO	_00444_DS_
+                                           ;	.line	782; "MC30P6280.c"	T1IF = 0;
 000072   3c4b     bclr    0x4b, 0          	BCLR	_TMRCRbits,0
-                                           ;	.line	764; "MC30P6280.c"	led_refresh();
+                                           ;	.line	786; "MC30P6280.c"	led_refresh();
 000073   20ce     call    0xce             	CALL	_led_refresh
-                                           ;	.line	768; "MC30P6280.c"	cnt++;
-000074   19a3     incr    0x23             	INCR	_int_isr_cnt_196608_115
+                                           ;	.line	790; "MC30P6280.c"	cnt++;
+000074   19a3     incr    0x23             	INCR	_int_isr_cnt_196608_110
                                            ;;unsigned compare: left < lit(0x3=3), size=1
-                                           ;	.line	769; "MC30P6280.c"	if (cnt >= 3) {
+                                           ;	.line	791; "MC30P6280.c"	if (cnt >= 3) {
 000075   0b03     movai   0x3              	MOVAI	0x03
-000076   1223     rsubar  0x23             	RSUBAR	_int_isr_cnt_196608_115
+000076   1223     rsubar  0x23             	RSUBAR	_int_isr_cnt_196608_110
 000077   3003     jbset   0x3, 0           	JBSET	STATUS,0
-000078   287b     goto    0x7b             	GOTO	_00487_DS_
+000078   287b     goto    0x7b             	GOTO	_00444_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
-                                           ;	.line	770; "MC30P6280.c"	cnt = 0;
-000079   1da3     clrr    0x23             	CLRR	_int_isr_cnt_196608_115
-                                           ;	.line	771; "MC30P6280.c"	lvd_scan();
-00007a   21d3     call    0x1d3            	CALL	_lvd_scan
-                                           _00487_DS_
-                                           ;	.line	793; "MC30P6280.c"	__endasm;
+                                           ;	.line	792; "MC30P6280.c"	cnt = 0;
+000079   1da3     clrr    0x23             	CLRR	_int_isr_cnt_196608_110
+                                           ;	.line	793; "MC30P6280.c"	lvd_scan();
+00007a   21b3     call    0x1b3            	CALL	_lvd_scan
+                                           _00444_DS_
+                                           ;	.line	815; "MC30P6280.c"	__endasm;
                                            	;
 00007b   112b     swapar  0x2b             	swapar	_statusbuf;
 00007c   1583     movra   0x3              	movra	_STATUS;
@@ -570,7 +570,7 @@ Address  Value    Disassembly              Source
 00007e   112a     swapar  0x2a             	swapar	_abuf;
                                            	
                                            END_OF_INTERRUPT
-                                           ;	.line	794; "MC30P6280.c"	}
+                                           ;	.line	816; "MC30P6280.c"	}
 00007f   000d     retie                    	RETIE	
                                            
                                            ;--------------------------------------------------------
@@ -601,109 +601,109 @@ Address  Value    Disassembly              Source
                                            ;; Starting pCode block
                                            _main	;Function start
                                            ; 2 exit points
-                                           ;	.line	531; "MC30P6280.c"	Sys_Init();
-000080   21ce     call    0x1ce            	CALL	_Sys_Init
-                                           ;	.line	532; "MC30P6280.c"	user_init();
-000081   2192     call    0x192            	CALL	_user_init
-                                           ;	.line	534; "MC30P6280.c"	into_low_power_cnt = (u8)((u16)2000 / 10); // 确保一上电就进入低功耗
+                                           ;	.line	552; "MC30P6280.c"	Sys_Init();
+000080   21ae     call    0x1ae            	CALL	_Sys_Init
+                                           ;	.line	553; "MC30P6280.c"	user_init();
+000081   2172     call    0x172            	CALL	_user_init
+                                           ;	.line	555; "MC30P6280.c"	into_low_power_cnt = (u8)((u16)2000 / 10); // 确保一上电就进入低功耗
 000082   0bc8     movai   0xc8             	MOVAI	0xc8
 000083   15b1     movra   0x31             	MOVRA	_into_low_power_cnt
-                                           _00420_DS_
-                                           ;	.line	544; "MC30P6280.c"	if ((flag_is_dev_working && pwr_off_cnt >= ((u32)30 * 60 * 1000 / 10)) ||
+                                           _00377_DS_
+                                           ;	.line	565; "MC30P6280.c"	if ((flag_is_dev_working && pwr_off_cnt >= ((u32)30 * 60 * 1000 / 10)) ||
 000084   332c     jbset   0x2c, 0x6        	JBSET	_flag1,6
-000085   2896     goto    0x96             	GOTO	_00418_DS_
+000085   2896     goto    0x96             	GOTO	_00375_DS_
                                            ;;unsigned compare: left < lit(0x2BF20=180000), size=4
 000086   0b00     movai   0                	MOVAI	0x00
 000087   1227     rsubar  0x27             	RSUBAR	(_pwr_off_cnt + 3)
 000088   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
-000089   2894     goto    0x94             	GOTO	_00448_DS_
+000089   2894     goto    0x94             	GOTO	_00405_DS_
 00008a   0b02     movai   0x2              	MOVAI	0x02
 00008b   1226     rsubar  0x26             	RSUBAR	(_pwr_off_cnt + 2)
 00008c   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
-00008d   2894     goto    0x94             	GOTO	_00448_DS_
+00008d   2894     goto    0x94             	GOTO	_00405_DS_
 00008e   0bbf     movai   0xbf             	MOVAI	0xbf
 00008f   1225     rsubar  0x25             	RSUBAR	(_pwr_off_cnt + 1)
 000090   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
-000091   2894     goto    0x94             	GOTO	_00448_DS_
+000091   2894     goto    0x94             	GOTO	_00405_DS_
 000092   0b20     movai   0x20             	MOVAI	0x20
 000093   1224     rsubar  0x24             	RSUBAR	_pwr_off_cnt
-                                           _00448_DS_
+                                           _00405_DS_
 000094   3403     jbclr   0x3, 0           	JBCLR	STATUS,0
-000095   289a     goto    0x9a             	GOTO	_00408_DS_
+000095   289a     goto    0x9a             	GOTO	_00365_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
                                            ;;unsigned compare: left < lit(0xC8=200), size=1
-                                           _00418_DS_
-                                           ;	.line	545; "MC30P6280.c"	into_low_power_cnt >= (u8)((u16)2000 / 10)) {
+                                           _00375_DS_
+                                           ;	.line	566; "MC30P6280.c"	into_low_power_cnt >= (u8)((u16)2000 / 10)) {
 000096   0bc8     movai   0xc8             	MOVAI	0xc8
 000097   1231     rsubar  0x31             	RSUBAR	_into_low_power_cnt
 000098   3003     jbset   0x3, 0           	JBSET	STATUS,0
-000099   2884     goto    0x84             	GOTO	_00420_DS_
+000099   2884     goto    0x84             	GOTO	_00377_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
-                                           _00408_DS_
-                                           ;	.line	560; "MC30P6280.c"	GIE = 0; // 关闭总中断
+                                           _00365_DS_
+                                           ;	.line	581; "MC30P6280.c"	GIE = 0; // 关闭总中断
 00009a   3f8e     bclr    0xe, 0x7         	BCLR	_INTEbits,7
-                                           ;	.line	566; "MC30P6280.c"	T0IE = 0;  // 屏蔽 timer0 中断
+                                           ;	.line	587; "MC30P6280.c"	T0IE = 0;  // 屏蔽 timer0 中断
 00009b   3c0e     bclr    0xe, 0           	BCLR	_INTEbits,0
-                                           ;	.line	567; "MC30P6280.c"	T1IE = 0;  // 屏蔽 timer1 中断
+                                           ;	.line	588; "MC30P6280.c"	T1IE = 0;  // 屏蔽 timer1 中断
 00009c   3ccb     bclr    0x4b, 0x1        	BCLR	_TMRCRbits,1
-                                           ;	.line	568; "MC30P6280.c"	T1EN = 0;  // 不使能定时器
+                                           ;	.line	589; "MC30P6280.c"	T1EN = 0;  // 不使能定时器
 00009d   3fcc     bclr    0x4c, 0x7        	BCLR	_T1CRbits,7
-                                           ;	.line	569; "MC30P6280.c"	LVDEN = 0; // 关闭 lvd
+                                           ;	.line	590; "MC30P6280.c"	LVDEN = 0; // 关闭 lvd
 00009e   3c08     bclr    0x8, 0           	BCLR	_MCRbits,0
-                                           ;	.line	572; "MC30P6280.c"	PUCON = 0xFF; // 0:Effective 1:invalid
+                                           ;	.line	593; "MC30P6280.c"	PUCON = 0xFF; // 0:Effective 1:invalid
 00009f   0bff     movai   0xff             	MOVAI	0xff
 0000a0   158d     movra   0xd              	MOVRA	_PUCON
-                                           ;	.line	573; "MC30P6280.c"	PDCON = 0xFF; // 0:Effective 1:invalid
+                                           ;	.line	594; "MC30P6280.c"	PDCON = 0xFF; // 0:Effective 1:invalid
 0000a1   0bff     movai   0xff             	MOVAI	0xff
 0000a2   158b     movra   0xb              	MOVRA	_PDCON
-                                           ;	.line	574; "MC30P6280.c"	DDR1 = 0xFF;  // 1:input 0:output
+                                           ;	.line	595; "MC30P6280.c"	DDR1 = 0xFF;  // 1:input 0:output
 0000a3   0bff     movai   0xff             	MOVAI	0xff
 0000a4   15c6     movra   0x46             	MOVRA	_DDR1
-                                           ;	.line	576; "MC30P6280.c"	PUCON &= ~(0x01 << 0);             // 上拉 20K ， P10(按键检测脚)
+                                           ;	.line	597; "MC30P6280.c"	PUCON &= ~(0x01 << 0);             // 上拉 20K ， P10(按键检测脚)
 0000a5   3c0d     bclr    0xd, 0           	BCLR	_PUCON,0
-                                           ;	.line	577; "MC30P6280.c"	PUCON &= ~(0x01 << 1 | 0x01 << 2); // LED控制 A端和B端，打开上拉
+                                           ;	.line	598; "MC30P6280.c"	PUCON &= ~(0x01 << 1 | 0x01 << 2); // LED控制 A端和B端，打开上拉
 0000a6   0bf9     movai   0xf9             	MOVAI	0xf9
 0000a7   1e8d     andra   0xd              	ANDRA	_PUCON
-                                           ;	.line	583; "MC30P6280.c"	KBIF = 0; // 清除中断标志
+                                           ;	.line	604; "MC30P6280.c"	KBIF = 0; // 清除中断标志
 0000a8   3c8f     bclr    0xf, 0x1         	BCLR	_INTFbits,1
-                                           ;	.line	584; "MC30P6280.c"	KBIE = 1; // 使能键盘中断
+                                           ;	.line	605; "MC30P6280.c"	KBIE = 1; // 使能键盘中断
 0000a9   388e     bset    0xe, 0x1         	BSET	_INTEbits,1
-                                           ;	.line	588; "MC30P6280.c"	P1KBCR |= (0x01 << 0) | (0x01 << 3);
+                                           ;	.line	609; "MC30P6280.c"	P1KBCR |= (0x01 << 0) | (0x01 << 3);
 0000aa   0b09     movai   0x9              	MOVAI	0x09
 0000ab   1789     orra    0x9              	ORRA	_P1KBCR
-                                           ;	.line	596; "MC30P6280.c"	Stop();
+                                           ;	.line	617; "MC30P6280.c"	Stop();
 0000ac   000b     sleep                    	stop	
-                                           ;	.line	597; "MC30P6280.c"	Nop();
+                                           ;	.line	618; "MC30P6280.c"	Nop();
 0000ad   0000     nop                      	nop	
-                                           ;	.line	598; "MC30P6280.c"	Nop();
+                                           ;	.line	619; "MC30P6280.c"	Nop();
 0000ae   0000     nop                      	nop	
-                                           ;	.line	601; "MC30P6280.c"	P1KBCR = 0; // 关闭所有键盘中断
+                                           ;	.line	622; "MC30P6280.c"	P1KBCR = 0; // 关闭所有键盘中断
 0000af   1d89     clrr    0x9              	CLRR	_P1KBCR
-                                           ;	.line	602; "MC30P6280.c"	KBIE = 0;   // 关闭键盘中断
+                                           ;	.line	623; "MC30P6280.c"	KBIE = 0;   // 关闭键盘中断
 0000b0   3c8e     bclr    0xe, 0x1         	BCLR	_INTEbits,1
-                                           ;	.line	603; "MC30P6280.c"	KBIF = 0;   // 清除 键盘中断 标志
+                                           ;	.line	624; "MC30P6280.c"	KBIF = 0;   // 清除 键盘中断 标志
 0000b1   3c8f     bclr    0xf, 0x1         	BCLR	_INTFbits,1
-                                           ;	.line	610; "MC30P6280.c"	Sys_Init();
-0000b2   21ce     call    0x1ce            	CALL	_Sys_Init
-                                           ;	.line	611; "MC30P6280.c"	user_init();
-0000b3   2192     call    0x192            	CALL	_user_init
-                                           ;	.line	613; "MC30P6280.c"	if (CHARGE_PIN == 0) {
+                                           ;	.line	631; "MC30P6280.c"	Sys_Init();
+0000b2   21ae     call    0x1ae            	CALL	_Sys_Init
+                                           ;	.line	632; "MC30P6280.c"	user_init();
+0000b3   2172     call    0x172            	CALL	_user_init
+                                           ;	.line	634; "MC30P6280.c"	if (CHARGE_PIN == 0) {
 0000b4   3586     jbclr   0x6, 0x3         	JBCLR	_P1bits,3
-0000b5   28bb     goto    0xbb             	GOTO	_00410_DS_
-                                           ;	.line	615; "MC30P6280.c"	tmp_bat_lev = BAT_LEV_4V2; // 唤醒后，给一个默认值
+0000b5   28bb     goto    0xbb             	GOTO	_00367_DS_
+                                           ;	.line	636; "MC30P6280.c"	tmp_bat_lev = BAT_LEV_4V2; // 唤醒后，给一个默认值
 0000b6   0b06     movai   0x6              	MOVAI	0x06
 0000b7   15af     movra   0x2f             	MOVRA	_tmp_bat_lev
-                                           ;	.line	616; "MC30P6280.c"	bat_lev = BAT_LEV_4V2;
+                                           ;	.line	637; "MC30P6280.c"	bat_lev = BAT_LEV_4V2;
 0000b8   0b06     movai   0x6              	MOVAI	0x06
 0000b9   15b0     movra   0x30             	MOVRA	_bat_lev
-0000ba   28bd     goto    0xbd             	GOTO	_00411_DS_
-                                           _00410_DS_
-                                           ;	.line	619; "MC30P6280.c"	tmp_bat_lev = BAT_LEV_2V9;
+0000ba   28bd     goto    0xbd             	GOTO	_00368_DS_
+                                           _00367_DS_
+                                           ;	.line	640; "MC30P6280.c"	tmp_bat_lev = BAT_LEV_2V9;
 0000bb   1daf     clrr    0x2f             	CLRR	_tmp_bat_lev
-                                           ;	.line	620; "MC30P6280.c"	bat_lev = BAT_LEV_2V9;
+                                           ;	.line	641; "MC30P6280.c"	bat_lev = BAT_LEV_2V9;
 0000bc   1db0     clrr    0x30             	CLRR	_bat_lev
-                                           _00411_DS_
-                                           ;	.line	627; "MC30P6280.c"	delay_ms(10);
+                                           _00368_DS_
+                                           ;	.line	649; "MC30P6280.c"	delay_ms(10);
 0000bd   0b0a     movai   0xa              	MOVAI	0x0a
 0000be   1594     movra   0x14             	MOVRA	STK02
 0000bf   0b00     movai   0                	MOVAI	0x00
@@ -711,21 +711,21 @@ Address  Value    Disassembly              Source
 0000c1   0b00     movai   0                	MOVAI	0x00
 0000c2   1596     movra   0x16             	MOVRA	STK00
 0000c3   0b00     movai   0                	MOVAI	0x00
-0000c4   21a2     call    0x1a2            	CALL	_delay_ms
-                                           ;	.line	628; "MC30P6280.c"	flag_is_led_show_enable = 1; // 确保电池电量更新后，再使能led显示
+0000c4   2182     call    0x182            	CALL	_delay_ms
+                                           ;	.line	650; "MC30P6280.c"	flag_is_led_show_enable = 1; // 确保电池电量更新后，再使能led显示
 0000c5   382d     bset    0x2d, 0          	BSET	_flag2,0
-                                           ;	.line	631; "MC30P6280.c"	if (CHARGE_PIN == 0 && bat_lev < BAT_LEV_3V0) {
+                                           ;	.line	653; "MC30P6280.c"	if (CHARGE_PIN == 0 && bat_lev < BAT_LEV_3V0) {
 0000c6   3586     jbclr   0x6, 0x3         	JBCLR	_P1bits,3
-0000c7   2884     goto    0x84             	GOTO	_00420_DS_
+0000c7   2884     goto    0x84             	GOTO	_00377_DS_
                                            ;;unsigned compare: left < lit(0x1=1), size=1
 0000c8   0b01     movai   0x1              	MOVAI	0x01
 0000c9   1230     rsubar  0x30             	RSUBAR	_bat_lev
 0000ca   3003     jbset   0x3, 0           	JBSET	STATUS,0
-0000cb   289a     goto    0x9a             	GOTO	_00408_DS_
+0000cb   289a     goto    0x9a             	GOTO	_00365_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
-                                           ;	.line	632; "MC30P6280.c"	goto label_low_power_in;
-0000cc   2884     goto    0x84             	GOTO	_00420_DS_
-                                           ;	.line	637; "MC30P6280.c"	}
+                                           ;	.line	654; "MC30P6280.c"	goto label_low_power_in;
+0000cc   2884     goto    0x84             	GOTO	_00377_DS_
+                                           ;	.line	659; "MC30P6280.c"	}
 0000cd   000c     return                   	RETURN	
                                            ; exit point of _main
                                            
@@ -743,21 +743,21 @@ Address  Value    Disassembly              Source
                                            ;; Starting pCode block
                                            _led_refresh	;Function start
                                            ; 2 exit points
-                                           ;	.line	518; "MC30P6280.c"	if (0 == flag_is_led_show_enable) {
+                                           ;	.line	539; "MC30P6280.c"	if (0 == flag_is_led_show_enable) {
 0000ce   342d     jbclr   0x2d, 0          	JBCLR	_flag2,0
-0000cf   28d1     goto    0xd1             	GOTO	_00400_DS_
-                                           ;	.line	519; "MC30P6280.c"	return;
-0000d0   28d5     goto    0xd5             	GOTO	_00403_DS_
-                                           _00400_DS_
-                                           ;	.line	522; "MC30P6280.c"	led_all_off();
-0000d1   2186     call    0x186            	CALL	_led_all_off
-                                           ;	.line	524; "MC30P6280.c"	if (flag_led_4_on) {
+0000cf   28d1     goto    0xd1             	GOTO	_00357_DS_
+                                           ;	.line	540; "MC30P6280.c"	return;
+0000d0   28d5     goto    0xd5             	GOTO	_00360_DS_
+                                           _00357_DS_
+                                           ;	.line	543; "MC30P6280.c"	led_all_off();
+0000d1   2166     call    0x166            	CALL	_led_all_off
+                                           ;	.line	545; "MC30P6280.c"	if (flag_led_4_on) {
 0000d2   32ac     jbset   0x2c, 0x5        	JBSET	_flag1,5
-0000d3   28d5     goto    0xd5             	GOTO	_00403_DS_
-                                           ;	.line	525; "MC30P6280.c"	led4_on();
-0000d4   2181     call    0x181            	CALL	_led4_on
-                                           _00403_DS_
-                                           ;	.line	527; "MC30P6280.c"	}
+0000d3   28d5     goto    0xd5             	GOTO	_00360_DS_
+                                           ;	.line	546; "MC30P6280.c"	led4_on();
+0000d4   2161     call    0x161            	CALL	_led4_on
+                                           _00360_DS_
+                                           ;	.line	548; "MC30P6280.c"	}
 0000d5   000c     return                   	RETURN	
                                            ; exit point of _led_refresh
                                            
@@ -779,89 +779,42 @@ Address  Value    Disassembly              Source
 0000d7   0b32     movai   0x32             	MOVAI	0x32
 0000d8   1233     rsubar  0x33             	RSUBAR	_led_sta_reflash_cnt
 0000d9   3003     jbset   0x3, 0           	JBSET	STATUS,0
-0000da   28fd     goto    0xfd             	GOTO	_00353_DS_
+0000da   28f0     goto    0xf0             	GOTO	_00351_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
                                            ;	.line	471; "MC30P6280.c"	led_sta_reflash_cnt = 0;
 0000db   1db3     clrr    0x33             	CLRR	_led_sta_reflash_cnt
-                                           ;	.line	473; "MC30P6280.c"	if (flag_is_in_charging) {
-0000dc   302c     jbset   0x2c, 0          	JBSET	_flag1,0
-0000dd   28e9     goto    0xe9             	GOTO	_00350_DS_
-                                           ;	.line	475; "MC30P6280.c"	flag_led_4_on = ~flag_led_4_on;
-0000de   1da1     clrr    0x21             	CLRR	r0x1020
-0000df   36ac     jbclr   0x2c, 0x5        	JBCLR	_flag1,5
-0000e0   19a1     incr    0x21             	INCR	r0x1020
-0000e1   1c21     comar   0x21             	COMAR	r0x1020
-0000e2   15a1     movra   0x21             	MOVRA	r0x1020
-0000e3   1321     rrar    0x21             	RRAR	r0x1020
-0000e4   3003     jbset   0x3, 0           	JBSET	STATUS,0
-0000e5   3eac     bclr    0x2c, 0x5        	BCLR	_flag1,5
-0000e6   3403     jbclr   0x3, 0           	JBCLR	STATUS,0
-0000e7   3aac     bset    0x2c, 0x5        	BSET	_flag1,5
-0000e8   28fd     goto    0xfd             	GOTO	_00353_DS_
-                                           _00350_DS_
-                                           ;	.line	476; "MC30P6280.c"	} else if (flag_is_dev_working) {
-0000e9   332c     jbset   0x2c, 0x6        	JBSET	_flag1,6
-0000ea   28fc     goto    0xfc             	GOTO	_00347_DS_
+                                           ;	.line	497; "MC30P6280.c"	if (flag_is_dev_working) {
+0000dc   332c     jbset   0x2c, 0x6        	JBSET	_flag1,6
+0000dd   28ef     goto    0xef             	GOTO	_00347_DS_
                                            ;;unsigned compare: left < lit(0x2=2), size=1
-                                           ;	.line	485; "MC30P6280.c"	if (bat_lev >= BAT_LEV_3V2) {
-0000eb   0b02     movai   0x2              	MOVAI	0x02
-0000ec   1230     rsubar  0x30             	RSUBAR	_bat_lev
-0000ed   3003     jbset   0x3, 0           	JBSET	STATUS,0
-0000ee   28f1     goto    0xf1             	GOTO	_00344_DS_
+                                           ;	.line	506; "MC30P6280.c"	if (bat_lev >= BAT_LEV_3V2) {
+0000de   0b02     movai   0x2              	MOVAI	0x02
+0000df   1230     rsubar  0x30             	RSUBAR	_bat_lev
+0000e0   3003     jbset   0x3, 0           	JBSET	STATUS,0
+0000e1   28e4     goto    0xe4             	GOTO	_00344_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
-                                           ;	.line	486; "MC30P6280.c"	flag_led_4_on = 1;
-0000ef   3aac     bset    0x2c, 0x5        	BSET	_flag1,5
-0000f0   28fd     goto    0xfd             	GOTO	_00353_DS_
+                                           ;	.line	507; "MC30P6280.c"	flag_led_4_on = 1;
+0000e2   3aac     bset    0x2c, 0x5        	BSET	_flag1,5
+0000e3   28f0     goto    0xf0             	GOTO	_00351_DS_
                                            _00344_DS_
-                                           ;	.line	490; "MC30P6280.c"	flag_led_4_on = ~flag_led_4_on;
-0000f1   1da1     clrr    0x21             	CLRR	r0x1020
-0000f2   36ac     jbclr   0x2c, 0x5        	JBCLR	_flag1,5
-0000f3   19a1     incr    0x21             	INCR	r0x1020
-0000f4   1c21     comar   0x21             	COMAR	r0x1020
-0000f5   15a1     movra   0x21             	MOVRA	r0x1020
-0000f6   1321     rrar    0x21             	RRAR	r0x1020
-0000f7   3003     jbset   0x3, 0           	JBSET	STATUS,0
-0000f8   3eac     bclr    0x2c, 0x5        	BCLR	_flag1,5
-0000f9   3403     jbclr   0x3, 0           	JBCLR	STATUS,0
-0000fa   3aac     bset    0x2c, 0x5        	BSET	_flag1,5
-0000fb   28fd     goto    0xfd             	GOTO	_00353_DS_
+                                           ;	.line	511; "MC30P6280.c"	flag_led_4_on = ~flag_led_4_on;
+0000e4   1da1     clrr    0x21             	CLRR	r0x1020
+0000e5   36ac     jbclr   0x2c, 0x5        	JBCLR	_flag1,5
+0000e6   19a1     incr    0x21             	INCR	r0x1020
+0000e7   1c21     comar   0x21             	COMAR	r0x1020
+0000e8   15a1     movra   0x21             	MOVRA	r0x1020
+0000e9   1321     rrar    0x21             	RRAR	r0x1020
+0000ea   3003     jbset   0x3, 0           	JBSET	STATUS,0
+0000eb   3eac     bclr    0x2c, 0x5        	BCLR	_flag1,5
+0000ec   3403     jbclr   0x3, 0           	JBCLR	STATUS,0
+0000ed   3aac     bset    0x2c, 0x5        	BSET	_flag1,5
+0000ee   28f0     goto    0xf0             	GOTO	_00351_DS_
                                            _00347_DS_
-                                           ;	.line	494; "MC30P6280.c"	flag_led_4_on = 0;
-0000fc   3eac     bclr    0x2c, 0x5        	BCLR	_flag1,5
-                                           _00353_DS_
-                                           ;	.line	498; "MC30P6280.c"	if (flag_is_in_charging) {
-0000fd   302c     jbset   0x2c, 0          	JBSET	_flag1,0
-0000fe   2910     goto    0x110            	GOTO	_00361_DS_
-                                           ;;unsigned compare: left < lit(0x6=6), size=1
-                                           ;	.line	500; "MC30P6280.c"	if (bat_lev >= BAT_LEV_4V2) {
-0000ff   0b06     movai   0x6              	MOVAI	0x06
-000100   1230     rsubar  0x30             	RSUBAR	_bat_lev
-000101   3003     jbset   0x3, 0           	JBSET	STATUS,0
-000102   2910     goto    0x110            	GOTO	_00361_DS_
-                                           ;;genSkipc:3291: created from rifx:013B5EFC
-                                           ;;unsigned compare: left < lit(0x8CA0=36000), size=2
-                                           ;	.line	501; "MC30P6280.c"	if (charge_fully_cnt < (u16)(((u32)6 * 60 * 1000) / 10)) {
-000103   0b8c     movai   0x8c             	MOVAI	0x8c
-000104   1229     rsubar  0x29             	RSUBAR	(_charge_fully_cnt + 1)
-000105   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
-000106   2909     goto    0x109            	GOTO	_00394_DS_
-000107   0ba0     movai   0xa0             	MOVAI	0xa0
-000108   1228     rsubar  0x28             	RSUBAR	_charge_fully_cnt
-                                           _00394_DS_
-000109   3403     jbclr   0x3, 0           	JBCLR	STATUS,0
-00010a   290f     goto    0x10f            	GOTO	_00355_DS_
-                                           ;;genSkipc:3291: created from rifx:013B5EFC
-                                           ;	.line	504; "MC30P6280.c"	charge_fully_cnt++;
-00010b   19a8     incr    0x28             	INCR	_charge_fully_cnt
-00010c   3503     jbclr   0x3, 0x2         	JBCLR	STATUS,2
-00010d   19a9     incr    0x29             	INCR	(_charge_fully_cnt + 1)
-00010e   2910     goto    0x110            	GOTO	_00361_DS_
-                                           _00355_DS_
-                                           ;	.line	506; "MC30P6280.c"	flag_led_4_on = 1;
-00010f   3aac     bset    0x2c, 0x5        	BSET	_flag1,5
-                                           _00361_DS_
-                                           ;	.line	510; "MC30P6280.c"	}
-000110   000c     return                   	RETURN	
+                                           ;	.line	515; "MC30P6280.c"	flag_led_4_on = 0;
+0000ef   3eac     bclr    0x2c, 0x5        	BCLR	_flag1,5
+                                           _00351_DS_
+                                           ;	.line	531; "MC30P6280.c"	}
+0000f0   000c     return                   	RETURN	
                                            ; exit point of _led_status_handle
                                            
                                            ;***
@@ -883,191 +836,191 @@ Address  Value    Disassembly              Source
                                            _key_scan	;Function start
                                            ; 2 exit points
                                            ;	.line	351; "MC30P6280.c"	if (flag_is_in_charging) {
-000111   302c     jbset   0x2c, 0          	JBSET	_flag1,0
-000112   291b     goto    0x11b            	GOTO	_00251_DS_
+0000f1   302c     jbset   0x2c, 0          	JBSET	_flag1,0
+0000f2   28fb     goto    0xfb             	GOTO	_00251_DS_
                                            ;	.line	353; "MC30P6280.c"	last_key_id = 0;
-000113   1db5     clrr    0x35             	CLRR	_last_key_id
+0000f3   1db5     clrr    0x35             	CLRR	_last_key_id
                                            ;	.line	354; "MC30P6280.c"	press_cnt = 0;
-000114   1db6     clrr    0x36             	CLRR	_press_cnt
+0000f4   1db6     clrr    0x36             	CLRR	_press_cnt
                                            ;	.line	355; "MC30P6280.c"	filter_cnt = 0;
-000115   1db7     clrr    0x37             	CLRR	_filter_cnt
+0000f5   1db7     clrr    0x37             	CLRR	_filter_cnt
                                            ;	.line	356; "MC30P6280.c"	filter_key_id = 0;
-000116   1db8     clrr    0x38             	CLRR	_filter_key_id
+0000f6   1db8     clrr    0x38             	CLRR	_filter_key_id
                                            ;	.line	357; "MC30P6280.c"	click_delay_cnt = 0;
-000117   1db9     clrr    0x39             	CLRR	_click_delay_cnt
+0000f7   1db9     clrr    0x39             	CLRR	_click_delay_cnt
                                            ;	.line	358; "MC30P6280.c"	click_cnt = 0;
-000118   1dba     clrr    0x3a             	CLRR	_click_cnt
+0000f8   1dba     clrr    0x3a             	CLRR	_click_cnt
                                            ;	.line	359; "MC30P6280.c"	cur_key_id = 0;
-000119   1dbb     clrr    0x3b             	CLRR	_cur_key_id
+0000f9   1dbb     clrr    0x3b             	CLRR	_cur_key_id
                                            ;	.line	360; "MC30P6280.c"	return;
-00011a   2980     goto    0x180            	GOTO	_00282_DS_
+0000fa   2960     goto    0x160            	GOTO	_00282_DS_
                                            _00251_DS_
                                            ;	.line	363; "MC30P6280.c"	led_all_off();
-00011b   2186     call    0x186            	CALL	_led_all_off
+0000fb   2166     call    0x166            	CALL	_led_all_off
                                            ;	.line	366; "MC30P6280.c"	PUCON &= ~(0x01 << 0); // 上拉电阻 20K
-00011c   3c0d     bclr    0xd, 0           	BCLR	_PUCON,0
+0000fc   3c0d     bclr    0xd, 0           	BCLR	_PUCON,0
                                            ;	.line	367; "MC30P6280.c"	DDR1 |= 0x01 << 0;     // 输入模式
-00011d   3846     bset    0x46, 0          	BSET	_DDR1,0
+0000fd   3846     bset    0x46, 0          	BSET	_DDR1,0
                                            ;	.line	374; "MC30P6280.c"	if (1 == KEY_SCAN_PIN) {
-00011e   1da0     clrr    0x20             	CLRR	r0x1021
-00011f   3406     jbclr   0x6, 0           	JBCLR	_P1bits,0
-000120   19a0     incr    0x20             	INCR	r0x1021
-000121   1620     movar   0x20             	MOVAR	r0x1021
-000122   0801     xorai   0x1              	XORAI	0x01
-000123   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
-000124   2927     goto    0x127            	GOTO	_00253_DS_
+0000fe   1da0     clrr    0x20             	CLRR	r0x1021
+0000ff   3406     jbclr   0x6, 0           	JBCLR	_P1bits,0
+000100   19a0     incr    0x20             	INCR	r0x1021
+000101   1620     movar   0x20             	MOVAR	r0x1021
+000102   0801     xorai   0x1              	XORAI	0x01
+000103   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
+000104   2907     goto    0x107            	GOTO	_00253_DS_
                                            ;	.line	375; "MC30P6280.c"	cur_key_id = KEY_ID_NONE;
-000125   1dbb     clrr    0x3b             	CLRR	_cur_key_id
-000126   292e     goto    0x12e            	GOTO	_00254_DS_
+000105   1dbb     clrr    0x3b             	CLRR	_cur_key_id
+000106   290e     goto    0x10e            	GOTO	_00254_DS_
                                            _00253_DS_
                                            ;	.line	378; "MC30P6280.c"	cur_key_id = KEY_ID_VAILD;
-000127   0b01     movai   0x1              	MOVAI	0x01
-000128   15bb     movra   0x3b             	MOVRA	_cur_key_id
+000107   0b01     movai   0x1              	MOVAI	0x01
+000108   15bb     movra   0x3b             	MOVRA	_cur_key_id
                                            ;	.line	382; "MC30P6280.c"	pwr_off_cnt = 0;
-000129   1da4     clrr    0x24             	CLRR	_pwr_off_cnt
-00012a   1da5     clrr    0x25             	CLRR	(_pwr_off_cnt + 1)
-00012b   1da6     clrr    0x26             	CLRR	(_pwr_off_cnt + 2)
-00012c   1da7     clrr    0x27             	CLRR	(_pwr_off_cnt + 3)
+000109   1da4     clrr    0x24             	CLRR	_pwr_off_cnt
+00010a   1da5     clrr    0x25             	CLRR	(_pwr_off_cnt + 1)
+00010b   1da6     clrr    0x26             	CLRR	(_pwr_off_cnt + 2)
+00010c   1da7     clrr    0x27             	CLRR	(_pwr_off_cnt + 3)
                                            ;	.line	383; "MC30P6280.c"	into_low_power_cnt = 0;
-00012d   1db1     clrr    0x31             	CLRR	_into_low_power_cnt
+00010d   1db1     clrr    0x31             	CLRR	_into_low_power_cnt
                                            _00254_DS_
                                            ;	.line	386; "MC30P6280.c"	if (cur_key_id != filter_key_id) {
-00012e   1638     movar   0x38             	MOVAR	_filter_key_id
-00012f   103b     xorar   0x3b             	XORAR	_cur_key_id
-000130   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
-000131   2933     goto    0x133            	GOTO	_00336_DS_
-000132   2937     goto    0x137            	GOTO	_00256_DS_
+00010e   1638     movar   0x38             	MOVAR	_filter_key_id
+00010f   103b     xorar   0x3b             	XORAR	_cur_key_id
+000110   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
+000111   2913     goto    0x113            	GOTO	_00336_DS_
+000112   2917     goto    0x117            	GOTO	_00256_DS_
                                            _00336_DS_
                                            ;	.line	388; "MC30P6280.c"	filter_cnt = 0;
-000133   1db7     clrr    0x37             	CLRR	_filter_cnt
+000113   1db7     clrr    0x37             	CLRR	_filter_cnt
                                            ;	.line	389; "MC30P6280.c"	filter_key_id = cur_key_id;
-000134   163b     movar   0x3b             	MOVAR	_cur_key_id
-000135   15b8     movra   0x38             	MOVRA	_filter_key_id
+000114   163b     movar   0x3b             	MOVAR	_cur_key_id
+000115   15b8     movra   0x38             	MOVRA	_filter_key_id
                                            ;	.line	390; "MC30P6280.c"	return;
-000136   2980     goto    0x180            	GOTO	_00282_DS_
+000116   2960     goto    0x160            	GOTO	_00282_DS_
                                            ;;unsigned compare: left < lit(0x3=3), size=1
                                            _00256_DS_
                                            ;	.line	393; "MC30P6280.c"	if (filter_cnt < KEY_FILTER_TIMES) {
-000137   0b03     movai   0x3              	MOVAI	0x03
-000138   1237     rsubar  0x37             	RSUBAR	_filter_cnt
-000139   3403     jbclr   0x3, 0           	JBCLR	STATUS,0
-00013a   293d     goto    0x13d            	GOTO	_00258_DS_
+000117   0b03     movai   0x3              	MOVAI	0x03
+000118   1237     rsubar  0x37             	RSUBAR	_filter_cnt
+000119   3403     jbclr   0x3, 0           	JBCLR	STATUS,0
+00011a   291d     goto    0x11d            	GOTO	_00258_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
                                            ;	.line	396; "MC30P6280.c"	filter_cnt++;
-00013b   19b7     incr    0x37             	INCR	_filter_cnt
+00011b   19b7     incr    0x37             	INCR	_filter_cnt
                                            ;	.line	397; "MC30P6280.c"	return;
-00013c   2980     goto    0x180            	GOTO	_00282_DS_
+00011c   2960     goto    0x160            	GOTO	_00282_DS_
                                            _00258_DS_
                                            ;	.line	401; "MC30P6280.c"	if (last_key_id != cur_key_id) {
-00013d   163b     movar   0x3b             	MOVAR	_cur_key_id
-00013e   1035     xorar   0x35             	XORAR	_last_key_id
-00013f   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
-000140   2942     goto    0x142            	GOTO	_00338_DS_
-000141   2965     goto    0x165            	GOTO	_00280_DS_
+00011d   163b     movar   0x3b             	MOVAR	_cur_key_id
+00011e   1035     xorar   0x35             	XORAR	_last_key_id
+00011f   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
+000120   2922     goto    0x122            	GOTO	_00338_DS_
+000121   2945     goto    0x145            	GOTO	_00280_DS_
                                            _00338_DS_
                                            ;	.line	404; "MC30P6280.c"	if (cur_key_id == KEY_ID_NONE) {
-000142   0b00     movai   0                	MOVAI	0x00
-000143   173b     orar    0x3b             	ORAR	_cur_key_id
-000144   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
-000145   2948     goto    0x148            	GOTO	_00260_DS_
+000122   0b00     movai   0                	MOVAI	0x00
+000123   173b     orar    0x3b             	ORAR	_cur_key_id
+000124   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
+000125   2928     goto    0x128            	GOTO	_00260_DS_
                                            ;	.line	406; "MC30P6280.c"	click_delay_cnt = 0;
-000146   1db9     clrr    0x39             	CLRR	_click_delay_cnt
-000147   294a     goto    0x14a            	GOTO	_00261_DS_
+000126   1db9     clrr    0x39             	CLRR	_click_delay_cnt
+000127   292a     goto    0x12a            	GOTO	_00261_DS_
                                            _00260_DS_
                                            ;	.line	410; "MC30P6280.c"	press_cnt = 0; // 重置按键按下时间计数
-000148   1db6     clrr    0x36             	CLRR	_press_cnt
+000128   1db6     clrr    0x36             	CLRR	_press_cnt
                                            ;	.line	411; "MC30P6280.c"	click_cnt++;
-000149   19ba     incr    0x3a             	INCR	_click_cnt
+000129   19ba     incr    0x3a             	INCR	_click_cnt
                                            _00261_DS_
                                            ;	.line	414; "MC30P6280.c"	if (click_cnt == 2) {
-00014a   163a     movar   0x3a             	MOVAR	_click_cnt
-00014b   0802     xorai   0x2              	XORAI	0x02
-00014c   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
-00014d   297e     goto    0x17e            	GOTO	_00281_DS_
+00012a   163a     movar   0x3a             	MOVAR	_click_cnt
+00012b   0802     xorai   0x2              	XORAI	0x02
+00012c   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
+00012d   295e     goto    0x15e            	GOTO	_00281_DS_
                                            ;	.line	417; "MC30P6280.c"	flag_is_dev_working = ~flag_is_dev_working;
-00014e   1da0     clrr    0x20             	CLRR	r0x1021
-00014f   372c     jbclr   0x2c, 0x6        	JBCLR	_flag1,6
-000150   19a0     incr    0x20             	INCR	r0x1021
-000151   1c20     comar   0x20             	COMAR	r0x1021
-000152   15a0     movra   0x20             	MOVRA	r0x1021
-000153   1320     rrar    0x20             	RRAR	r0x1021
-000154   3003     jbset   0x3, 0           	JBSET	STATUS,0
-000155   3f2c     bclr    0x2c, 0x6        	BCLR	_flag1,6
-000156   3403     jbclr   0x3, 0           	JBCLR	STATUS,0
-000157   3b2c     bset    0x2c, 0x6        	BSET	_flag1,6
+00012e   1da0     clrr    0x20             	CLRR	r0x1021
+00012f   372c     jbclr   0x2c, 0x6        	JBCLR	_flag1,6
+000130   19a0     incr    0x20             	INCR	r0x1021
+000131   1c20     comar   0x20             	COMAR	r0x1021
+000132   15a0     movra   0x20             	MOVRA	r0x1021
+000133   1320     rrar    0x20             	RRAR	r0x1021
+000134   3003     jbset   0x3, 0           	JBSET	STATUS,0
+000135   3f2c     bclr    0x2c, 0x6        	BCLR	_flag1,6
+000136   3403     jbclr   0x3, 0           	JBCLR	STATUS,0
+000137   3b2c     bset    0x2c, 0x6        	BSET	_flag1,6
                                            ;	.line	419; "MC30P6280.c"	if (flag_is_dev_working) {
-000158   332c     jbset   0x2c, 0x6        	JBSET	_flag1,6
-000159   295e     goto    0x15e            	GOTO	_00263_DS_
+000138   332c     jbset   0x2c, 0x6        	JBSET	_flag1,6
+000139   293e     goto    0x13e            	GOTO	_00263_DS_
                                            ;	.line	420; "MC30P6280.c"	pen_pwr_on();
-00015a   218f     call    0x18f            	CALL	_pen_pwr_on
+00013a   216f     call    0x16f            	CALL	_pen_pwr_on
                                            ;	.line	422; "MC30P6280.c"	led_sta_reflash_cnt = (u8)(500 / 10);
-00015b   0b32     movai   0x32             	MOVAI	0x32
-00015c   15b3     movra   0x33             	MOVRA	_led_sta_reflash_cnt
-00015d   2963     goto    0x163            	GOTO	_00264_DS_
+00013b   0b32     movai   0x32             	MOVAI	0x32
+00013c   15b3     movra   0x33             	MOVRA	_led_sta_reflash_cnt
+00013d   2943     goto    0x143            	GOTO	_00264_DS_
                                            _00263_DS_
                                            ;	.line	425; "MC30P6280.c"	pen_pwr_off();
-00015e   218b     call    0x18b            	CALL	_pen_pwr_off
+00013e   216b     call    0x16b            	CALL	_pen_pwr_off
                                            ;	.line	426; "MC30P6280.c"	flag_led_1_on = 0;
-00015f   3d2c     bclr    0x2c, 0x2        	BCLR	_flag1,2
+00013f   3d2c     bclr    0x2c, 0x2        	BCLR	_flag1,2
                                            ;	.line	427; "MC30P6280.c"	flag_led_2_on = 0;
-000160   3dac     bclr    0x2c, 0x3        	BCLR	_flag1,3
+000140   3dac     bclr    0x2c, 0x3        	BCLR	_flag1,3
                                            ;	.line	428; "MC30P6280.c"	flag_led_3_on = 0;
-000161   3e2c     bclr    0x2c, 0x4        	BCLR	_flag1,4
+000141   3e2c     bclr    0x2c, 0x4        	BCLR	_flag1,4
                                            ;	.line	429; "MC30P6280.c"	flag_led_4_on = 0;
-000162   3eac     bclr    0x2c, 0x5        	BCLR	_flag1,5
+000142   3eac     bclr    0x2c, 0x5        	BCLR	_flag1,5
                                            _00264_DS_
                                            ;	.line	433; "MC30P6280.c"	click_cnt = 0;
-000163   1dba     clrr    0x3a             	CLRR	_click_cnt
-000164   297e     goto    0x17e            	GOTO	_00281_DS_
+000143   1dba     clrr    0x3a             	CLRR	_click_cnt
+000144   295e     goto    0x15e            	GOTO	_00281_DS_
                                            _00280_DS_
                                            ;	.line	440; "MC30P6280.c"	if (cur_key_id == KEY_ID_NONE) { // 没有按键按下，说明松手
-000165   0b00     movai   0                	MOVAI	0x00
-000166   173b     orar    0x3b             	ORAR	_cur_key_id
-000167   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
-000168   2979     goto    0x179            	GOTO	_00277_DS_
+000145   0b00     movai   0                	MOVAI	0x00
+000146   173b     orar    0x3b             	ORAR	_cur_key_id
+000147   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
+000148   2959     goto    0x159            	GOTO	_00277_DS_
                                            ;	.line	441; "MC30P6280.c"	if (click_cnt > 0) {
-000169   0b00     movai   0                	MOVAI	0x00
-00016a   173a     orar    0x3a             	ORAR	_click_cnt
-00016b   3503     jbclr   0x3, 0x2         	JBCLR	STATUS,2
-00016c   297e     goto    0x17e            	GOTO	_00281_DS_
+000149   0b00     movai   0                	MOVAI	0x00
+00014a   173a     orar    0x3a             	ORAR	_click_cnt
+00014b   3503     jbclr   0x3, 0x2         	JBCLR	STATUS,2
+00014c   295e     goto    0x15e            	GOTO	_00281_DS_
                                            ;;unsigned compare: left < lit(0x1E=30), size=1
-                                           ;	.line	442; "MC30P6280.c"	if (click_delay_cnt >= KEY_CLICK_DELAY_TIME) { 
-00016d   0b1e     movai   0x1e             	MOVAI	0x1e
-00016e   1239     rsubar  0x39             	RSUBAR	_click_delay_cnt
-00016f   3003     jbset   0x3, 0           	JBSET	STATUS,0
-000170   2973     goto    0x173            	GOTO	_00270_DS_
+                                           ;	.line	442; "MC30P6280.c"	if (click_delay_cnt >= KEY_CLICK_DELAY_TIME) {
+00014d   0b1e     movai   0x1e             	MOVAI	0x1e
+00014e   1239     rsubar  0x39             	RSUBAR	_click_delay_cnt
+00014f   3003     jbset   0x3, 0           	JBSET	STATUS,0
+000150   2953     goto    0x153            	GOTO	_00270_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
                                            ;	.line	444; "MC30P6280.c"	click_cnt = 0; // 处理完事件后,清空连击的次数
-000171   1dba     clrr    0x3a             	CLRR	_click_cnt
-000172   297e     goto    0x17e            	GOTO	_00281_DS_
+000151   1dba     clrr    0x3a             	CLRR	_click_cnt
+000152   295e     goto    0x15e            	GOTO	_00281_DS_
                                            ;;unsigned compare: left < lit(0xFF=255), size=1
                                            _00270_DS_
                                            ;	.line	446; "MC30P6280.c"	if (click_delay_cnt < 255) {
-000173   0bff     movai   0xff             	MOVAI	0xff
-000174   1239     rsubar  0x39             	RSUBAR	_click_delay_cnt
-000175   3403     jbclr   0x3, 0           	JBCLR	STATUS,0
-000176   297e     goto    0x17e            	GOTO	_00281_DS_
+000153   0bff     movai   0xff             	MOVAI	0xff
+000154   1239     rsubar  0x39             	RSUBAR	_click_delay_cnt
+000155   3403     jbclr   0x3, 0           	JBCLR	STATUS,0
+000156   295e     goto    0x15e            	GOTO	_00281_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
                                            ;	.line	448; "MC30P6280.c"	click_delay_cnt++;
-000177   19b9     incr    0x39             	INCR	_click_delay_cnt
-000178   297e     goto    0x17e            	GOTO	_00281_DS_
+000157   19b9     incr    0x39             	INCR	_click_delay_cnt
+000158   295e     goto    0x15e            	GOTO	_00281_DS_
                                            ;;unsigned compare: left < lit(0xFF=255), size=1
                                            _00277_DS_
                                            ;	.line	457; "MC30P6280.c"	if (press_cnt < 255) {
-000179   0bff     movai   0xff             	MOVAI	0xff
-00017a   1236     rsubar  0x36             	RSUBAR	_press_cnt
-00017b   3403     jbclr   0x3, 0           	JBCLR	STATUS,0
-00017c   297e     goto    0x17e            	GOTO	_00281_DS_
+000159   0bff     movai   0xff             	MOVAI	0xff
+00015a   1236     rsubar  0x36             	RSUBAR	_press_cnt
+00015b   3403     jbclr   0x3, 0           	JBCLR	STATUS,0
+00015c   295e     goto    0x15e            	GOTO	_00281_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
                                            ;	.line	458; "MC30P6280.c"	press_cnt++;
-00017d   19b6     incr    0x36             	INCR	_press_cnt
+00015d   19b6     incr    0x36             	INCR	_press_cnt
                                            _00281_DS_
                                            ;	.line	463; "MC30P6280.c"	last_key_id = cur_key_id;
-00017e   163b     movar   0x3b             	MOVAR	_cur_key_id
-00017f   15b5     movra   0x35             	MOVRA	_last_key_id
+00015e   163b     movar   0x3b             	MOVAR	_cur_key_id
+00015f   15b5     movra   0x35             	MOVRA	_last_key_id
                                            _00282_DS_
                                            ;	.line	464; "MC30P6280.c"	}
-000180   000c     return                   	RETURN	
+000160   000c     return                   	RETURN	
                                            ; exit point of _key_scan
                                            
                                            ;***
@@ -1080,15 +1033,15 @@ Address  Value    Disassembly              Source
                                            _led4_on	;Function start
                                            ; 2 exit points
                                            ;	.line	341; "MC30P6280.c"	P1 &= ~(0x01 << 0);   // P10 输出低电平
-000181   3c06     bclr    0x6, 0           	BCLR	_P1,0
+000161   3c06     bclr    0x6, 0           	BCLR	_P1,0
                                            ;	.line	342; "MC30P6280.c"	DDR1 &= ~(0x01 << 0); // P10 输出模式
-000182   3c46     bclr    0x46, 0          	BCLR	_DDR1,0
+000162   3c46     bclr    0x46, 0          	BCLR	_DDR1,0
                                            ;	.line	344; "MC30P6280.c"	P1 |= (0x01 << 2);    // P12 输出高电平
-000183   3906     bset    0x6, 0x2         	BSET	_P1,2
+000163   3906     bset    0x6, 0x2         	BSET	_P1,2
                                            ;	.line	345; "MC30P6280.c"	DDR1 &= ~(0x01 << 2); // P12 输出模式
-000184   3d46     bclr    0x46, 0x2        	BCLR	_DDR1,2
+000164   3d46     bclr    0x46, 0x2        	BCLR	_DDR1,2
                                            ;	.line	346; "MC30P6280.c"	}
-000185   000c     return                   	RETURN	
+000165   000c     return                   	RETURN	
                                            ; exit point of _led4_on
                                            
                                            ;***
@@ -1101,13 +1054,13 @@ Address  Value    Disassembly              Source
                                            _led_all_off	;Function start
                                            ; 2 exit points
                                            ;	.line	286; "MC30P6280.c"	PUCON |= (0x01 << 0 | 0x01 << 1 | 0x01 << 2);
-000186   0b07     movai   0x7              	MOVAI	0x07
-000187   178d     orra    0xd              	ORRA	_PUCON
+000166   0b07     movai   0x7              	MOVAI	0x07
+000167   178d     orra    0xd              	ORRA	_PUCON
                                            ;	.line	291; "MC30P6280.c"	(0x01 << 2);  // P12
-000188   0b07     movai   0x7              	MOVAI	0x07
-000189   17c6     orra    0x46             	ORRA	_DDR1
+000168   0b07     movai   0x7              	MOVAI	0x07
+000169   17c6     orra    0x46             	ORRA	_DDR1
                                            ;	.line	293; "MC30P6280.c"	}
-00018a   000c     return                   	RETURN	
+00016a   000c     return                   	RETURN	
                                            ; exit point of _led_all_off
                                            
                                            ;***
@@ -1120,13 +1073,13 @@ Address  Value    Disassembly              Source
                                            _pen_pwr_off	;Function start
                                            ; 2 exit points
                                            ;	.line	273; "MC30P6280.c"	PUCON |= (0x01 << 4); // 不使能上拉
-00018b   3a0d     bset    0xd, 0x4         	BSET	_PUCON,4
+00016b   3a0d     bset    0xd, 0x4         	BSET	_PUCON,4
                                            ;	.line	274; "MC30P6280.c"	PDCON |= (0x01 << 4); // 不使能下拉
-00018c   3a0b     bset    0xb, 0x4         	BSET	_PDCON,4
+00016c   3a0b     bset    0xb, 0x4         	BSET	_PDCON,4
                                            ;	.line	275; "MC30P6280.c"	DDR1 |= 0x01 << 4;    // P14 输入模式
-00018d   3a46     bset    0x46, 0x4        	BSET	_DDR1,4
+00016d   3a46     bset    0x46, 0x4        	BSET	_DDR1,4
                                            ;	.line	277; "MC30P6280.c"	}
-00018e   000c     return                   	RETURN	
+00016e   000c     return                   	RETURN	
                                            ; exit point of _pen_pwr_off
                                            
                                            ;***
@@ -1139,11 +1092,11 @@ Address  Value    Disassembly              Source
                                            _pen_pwr_on	;Function start
                                            ; 2 exit points
                                            ;	.line	265; "MC30P6280.c"	DDR1 &= ~(0x01 << 4); // 输出模式
-00018f   3e46     bclr    0x46, 0x4        	BCLR	_DDR1,4
+00016f   3e46     bclr    0x46, 0x4        	BCLR	_DDR1,4
                                            ;	.line	266; "MC30P6280.c"	P14D = 0;             // 输出低电平
-000190   3e06     bclr    0x6, 0x4         	BCLR	_P1bits,4
+000170   3e06     bclr    0x6, 0x4         	BCLR	_P1bits,4
                                            ;	.line	268; "MC30P6280.c"	}
-000191   000c     return                   	RETURN	
+000171   000c     return                   	RETURN	
                                            ; exit point of _pen_pwr_on
                                            
                                            ;***
@@ -1167,30 +1120,30 @@ Address  Value    Disassembly              Source
                                            _user_init	;Function start
                                            ; 2 exit points
                                            ;	.line	236; "MC30P6280.c"	PUCON &= ~(0x01 << 0); // 上拉电阻 20K
-000192   3c0d     bclr    0xd, 0           	BCLR	_PUCON,0
+000172   3c0d     bclr    0xd, 0           	BCLR	_PUCON,0
                                            ;	.line	237; "MC30P6280.c"	DDR1 |= 0x01 << 0;     // 输入模式
-000193   3846     bset    0x46, 0          	BSET	_DDR1,0
+000173   3846     bset    0x46, 0          	BSET	_DDR1,0
                                            ;	.line	240; "MC30P6280.c"	DDR1 |= 0x01 << 4; // P14 输入模式
-000194   3a46     bset    0x46, 0x4        	BSET	_DDR1,4
+000174   3a46     bset    0x46, 0x4        	BSET	_DDR1,4
                                            ;	.line	243; "MC30P6280.c"	DDR1 |= 0x01 << 5; // 输入模式
-000195   3ac6     bset    0x46, 0x5        	BSET	_DDR1,5
+000175   3ac6     bset    0x46, 0x5        	BSET	_DDR1,5
                                            ;	.line	246; "MC30P6280.c"	DDR1 |= 0x01 << 3;
-000196   39c6     bset    0x46, 0x3        	BSET	_DDR1,3
+000176   39c6     bset    0x46, 0x3        	BSET	_DDR1,3
                                            ;	.line	248; "MC30P6280.c"	timer0_init();
-000197   22fa     call    0x2fa            	CALL	_timer0_init
+000177   22da     call    0x2da            	CALL	_timer0_init
                                            ;	.line	249; "MC30P6280.c"	timer1_init();
-000198   2001     call    0x1              	CALL	_timer1_init
+000178   2001     call    0x1              	CALL	_timer1_init
                                            ;	.line	259; "MC30P6280.c"	delay_ms(1); // 等待系统稳定
-000199   0b01     movai   0x1              	MOVAI	0x01
-00019a   1594     movra   0x14             	MOVRA	STK02
-00019b   0b00     movai   0                	MOVAI	0x00
-00019c   1595     movra   0x15             	MOVRA	STK01
-00019d   0b00     movai   0                	MOVAI	0x00
-00019e   1596     movra   0x16             	MOVRA	STK00
-00019f   0b00     movai   0                	MOVAI	0x00
-0001a0   21a2     call    0x1a2            	CALL	_delay_ms
+000179   0b01     movai   0x1              	MOVAI	0x01
+00017a   1594     movra   0x14             	MOVRA	STK02
+00017b   0b00     movai   0                	MOVAI	0x00
+00017c   1595     movra   0x15             	MOVRA	STK01
+00017d   0b00     movai   0                	MOVAI	0x00
+00017e   1596     movra   0x16             	MOVRA	STK00
+00017f   0b00     movai   0                	MOVAI	0x00
+000180   2182     call    0x182            	CALL	_delay_ms
                                            ;	.line	260; "MC30P6280.c"	}
-0001a1   000c     return                   	RETURN	
+000181   000c     return                   	RETURN	
                                            ; exit point of _user_init
                                            
                                            ;***
@@ -1215,59 +1168,59 @@ Address  Value    Disassembly              Source
                                            _delay_ms	;Function start
                                            ; 2 exit points
                                            ;	.line	220; "MC30P6280.c"	void delay_ms(u32 xms)
-0001a2   159b     movra   0x1b             	MOVRA	r0x1018
-0001a3   1616     movar   0x16             	MOVAR	STK00
-0001a4   159a     movra   0x1a             	MOVRA	r0x1019
-0001a5   1615     movar   0x15             	MOVAR	STK01
-0001a6   1599     movra   0x19             	MOVRA	r0x101A
-0001a7   1614     movar   0x14             	MOVAR	STK02
-0001a8   1598     movra   0x18             	MOVRA	r0x101B
+000182   159b     movra   0x1b             	MOVRA	r0x1018
+000183   1616     movar   0x16             	MOVAR	STK00
+000184   159a     movra   0x1a             	MOVRA	r0x1019
+000185   1615     movar   0x15             	MOVAR	STK01
+000186   1599     movra   0x19             	MOVRA	r0x101A
+000187   1614     movar   0x14             	MOVAR	STK02
+000188   1598     movra   0x18             	MOVRA	r0x101B
                                            _00222_DS_
                                            ;	.line	222; "MC30P6280.c"	while (xms) {
-0001a9   1618     movar   0x18             	MOVAR	r0x101B
-0001aa   1719     orar    0x19             	ORAR	r0x101A
-0001ab   171a     orar    0x1a             	ORAR	r0x1019
-0001ac   171b     orar    0x1b             	ORAR	r0x1018
-0001ad   3503     jbclr   0x3, 0x2         	JBCLR	STATUS,2
-0001ae   29cd     goto    0x1cd            	GOTO	_00225_DS_
+000189   1618     movar   0x18             	MOVAR	r0x101B
+00018a   1719     orar    0x19             	ORAR	r0x101A
+00018b   171a     orar    0x1a             	ORAR	r0x1019
+00018c   171b     orar    0x1b             	ORAR	r0x1018
+00018d   3503     jbclr   0x3, 0x2         	JBCLR	STATUS,2
+00018e   29ad     goto    0x1ad            	GOTO	_00225_DS_
                                            ;	.line	224; "MC30P6280.c"	while (i--) {
-0001af   0b13     movai   0x13             	MOVAI	0x13
-0001b0   159c     movra   0x1c             	MOVRA	r0x101C
-0001b1   0b02     movai   0x2              	MOVAI	0x02
-0001b2   159d     movra   0x1d             	MOVRA	r0x101D
+00018f   0b13     movai   0x13             	MOVAI	0x13
+000190   159c     movra   0x1c             	MOVRA	r0x101C
+000191   0b02     movai   0x2              	MOVAI	0x02
+000192   159d     movra   0x1d             	MOVRA	r0x101D
                                            _00219_DS_
-0001b3   161c     movar   0x1c             	MOVAR	r0x101C
-0001b4   159e     movra   0x1e             	MOVRA	r0x101E
-0001b5   161d     movar   0x1d             	MOVAR	r0x101D
-0001b6   159f     movra   0x1f             	MOVRA	r0x101F
-0001b7   0bff     movai   0xff             	MOVAI	0xff
-0001b8   1f9c     addra   0x1c             	ADDRA	r0x101C
-0001b9   3003     jbset   0x3, 0           	JBSET	STATUS,0
-0001ba   1b9d     decr    0x1d             	DECR	r0x101D
-0001bb   161e     movar   0x1e             	MOVAR	r0x101E
-0001bc   171f     orar    0x1f             	ORAR	r0x101F
-0001bd   3503     jbclr   0x3, 0x2         	JBCLR	STATUS,2
-0001be   29c1     goto    0x1c1            	GOTO	_00221_DS_
+000193   161c     movar   0x1c             	MOVAR	r0x101C
+000194   159e     movra   0x1e             	MOVRA	r0x101E
+000195   161d     movar   0x1d             	MOVAR	r0x101D
+000196   159f     movra   0x1f             	MOVRA	r0x101F
+000197   0bff     movai   0xff             	MOVAI	0xff
+000198   1f9c     addra   0x1c             	ADDRA	r0x101C
+000199   3003     jbset   0x3, 0           	JBSET	STATUS,0
+00019a   1b9d     decr    0x1d             	DECR	r0x101D
+00019b   161e     movar   0x1e             	MOVAR	r0x101E
+00019c   171f     orar    0x1f             	ORAR	r0x101F
+00019d   3503     jbclr   0x3, 0x2         	JBCLR	STATUS,2
+00019e   29a1     goto    0x1a1            	GOTO	_00221_DS_
                                            ;	.line	225; "MC30P6280.c"	Nop();
-0001bf   0000     nop                      	nop	
-0001c0   29b3     goto    0x1b3            	GOTO	_00219_DS_
+00019f   0000     nop                      	nop	
+0001a0   2993     goto    0x193            	GOTO	_00219_DS_
                                            _00221_DS_
                                            ;	.line	227; "MC30P6280.c"	xms--;
-0001c1   0bff     movai   0xff             	MOVAI	0xff
-0001c2   1f98     addra   0x18             	ADDRA	r0x101B
-0001c3   0bff     movai   0xff             	MOVAI	0xff
-0001c4   3003     jbset   0x3, 0           	JBSET	STATUS,0
-0001c5   1f99     addra   0x19             	ADDRA	r0x101A
-0001c6   0bff     movai   0xff             	MOVAI	0xff
-0001c7   3003     jbset   0x3, 0           	JBSET	STATUS,0
-0001c8   1f9a     addra   0x1a             	ADDRA	r0x1019
-0001c9   0bff     movai   0xff             	MOVAI	0xff
-0001ca   3003     jbset   0x3, 0           	JBSET	STATUS,0
-0001cb   1f9b     addra   0x1b             	ADDRA	r0x1018
-0001cc   29a9     goto    0x1a9            	GOTO	_00222_DS_
+0001a1   0bff     movai   0xff             	MOVAI	0xff
+0001a2   1f98     addra   0x18             	ADDRA	r0x101B
+0001a3   0bff     movai   0xff             	MOVAI	0xff
+0001a4   3003     jbset   0x3, 0           	JBSET	STATUS,0
+0001a5   1f99     addra   0x19             	ADDRA	r0x101A
+0001a6   0bff     movai   0xff             	MOVAI	0xff
+0001a7   3003     jbset   0x3, 0           	JBSET	STATUS,0
+0001a8   1f9a     addra   0x1a             	ADDRA	r0x1019
+0001a9   0bff     movai   0xff             	MOVAI	0xff
+0001aa   3003     jbset   0x3, 0           	JBSET	STATUS,0
+0001ab   1f9b     addra   0x1b             	ADDRA	r0x1018
+0001ac   2989     goto    0x189            	GOTO	_00222_DS_
                                            _00225_DS_
                                            ;	.line	229; "MC30P6280.c"	}
-0001cd   000c     return                   	RETURN	
+0001ad   000c     return                   	RETURN	
                                            ; exit point of _delay_ms
                                            
                                            ;***
@@ -1285,15 +1238,15 @@ Address  Value    Disassembly              Source
                                            _Sys_Init	;Function start
                                            ; 2 exit points
                                            ;	.line	212; "MC30P6280.c"	GIE = 0;
-0001ce   3f8e     bclr    0xe, 0x7         	BCLR	_INTEbits,7
+0001ae   3f8e     bclr    0xe, 0x7         	BCLR	_INTEbits,7
                                            ;	.line	213; "MC30P6280.c"	C_RAM();
-0001cf   228e     call    0x28e            	CALL	_C_RAM
+0001af   226e     call    0x26e            	CALL	_C_RAM
                                            ;	.line	214; "MC30P6280.c"	IO_Init();
-0001d0   2286     call    0x286            	CALL	_IO_Init
+0001b0   2266     call    0x266            	CALL	_IO_Init
                                            ;	.line	215; "MC30P6280.c"	GIE = 1;
-0001d1   3b8e     bset    0xe, 0x7         	BSET	_INTEbits,7
+0001b1   3b8e     bset    0xe, 0x7         	BSET	_INTEbits,7
                                            ;	.line	216; "MC30P6280.c"	}
-0001d2   000c     return                   	RETURN	
+0001b2   000c     return                   	RETURN	
                                            ; exit point of _Sys_Init
                                            
                                            ;***
@@ -1308,281 +1261,281 @@ Address  Value    Disassembly              Source
                                            _lvd_scan	;Function start
                                            ; 2 exit points
                                            ;	.line	94; "MC30P6280.c"	LVDEN = 1; // 使能 LVD
-0001d3   3808     bset    0x8, 0           	BSET	_MCRbits,0
+0001b3   3808     bset    0x8, 0           	BSET	_MCRbits,0
                                            ;	.line	96; "MC30P6280.c"	switch (cur_lvd_state) {
-0001d4   1634     movar   0x34             	MOVAR	_cur_lvd_state
-0001d5   1597     movra   0x17             	MOVRA	r0x1022
+0001b4   1634     movar   0x34             	MOVAR	_cur_lvd_state
+0001b5   1597     movra   0x17             	MOVRA	r0x1022
                                            ;;swapping arguments (AOP_TYPEs 1/2)
                                            ;;unsigned compare: left >= lit(0xF=15), size=1
-0001d6   0b0f     movai   0xf              	MOVAI	0x0f
-0001d7   1217     rsubar  0x17             	RSUBAR	r0x1022
-0001d8   3403     jbclr   0x3, 0           	JBCLR	STATUS,0
-0001d9   2a42     goto    0x242            	GOTO	_00128_DS_
+0001b6   0b0f     movai   0xf              	MOVAI	0x0f
+0001b7   1217     rsubar  0x17             	RSUBAR	r0x1022
+0001b8   3403     jbclr   0x3, 0           	JBCLR	STATUS,0
+0001b9   2a22     goto    0x222            	GOTO	_00128_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
-0001da   0b01     movai   0x1              	MOVAI	HIGH(_00201_DS_)
-0001db   158a     movra   0xa              	MOVRA	PCLATH
-0001dc   0be1     movai   0xe1             	MOVAI	_00201_DS_
-0001dd   1f17     addar   0x17             	ADDAR	r0x1022
-0001de   3403     jbclr   0x3, 0           	JBCLR	STATUS,0
-0001df   198a     incr    0xa              	INCR	PCLATH
-0001e0   1582     movra   0x2              	MOVRA	PCL
+0001ba   0b01     movai   0x1              	MOVAI	HIGH(_00201_DS_)
+0001bb   158a     movra   0xa              	MOVRA	PCLATH
+0001bc   0bc1     movai   0xc1             	MOVAI	_00201_DS_
+0001bd   1f17     addar   0x17             	ADDAR	r0x1022
+0001be   3403     jbclr   0x3, 0           	JBCLR	STATUS,0
+0001bf   198a     incr    0xa              	INCR	PCLATH
+0001c0   1582     movra   0x2              	MOVRA	PCL
                                            _00201_DS_
-0001e1   29f0     goto    0x1f0            	GOTO	_00114_DS_
-0001e2   2a21     goto    0x221            	GOTO	_00121_DS_
-0001e3   29f7     goto    0x1f7            	GOTO	_00115_DS_
-0001e4   2a26     goto    0x226            	GOTO	_00122_DS_
-0001e5   29fe     goto    0x1fe            	GOTO	_00116_DS_
-0001e6   2a2b     goto    0x22b            	GOTO	_00123_DS_
-0001e7   2a05     goto    0x205            	GOTO	_00117_DS_
-0001e8   2a30     goto    0x230            	GOTO	_00124_DS_
-0001e9   2a0c     goto    0x20c            	GOTO	_00118_DS_
-0001ea   2a35     goto    0x235            	GOTO	_00125_DS_
-0001eb   2a13     goto    0x213            	GOTO	_00119_DS_
-0001ec   2a3a     goto    0x23a            	GOTO	_00126_DS_
-0001ed   2a1a     goto    0x21a            	GOTO	_00120_DS_
-0001ee   2a3f     goto    0x23f            	GOTO	_00127_DS_
-0001ef   29f0     goto    0x1f0            	GOTO	_00114_DS_
+0001c1   29d0     goto    0x1d0            	GOTO	_00114_DS_
+0001c2   2a01     goto    0x201            	GOTO	_00121_DS_
+0001c3   29d7     goto    0x1d7            	GOTO	_00115_DS_
+0001c4   2a06     goto    0x206            	GOTO	_00122_DS_
+0001c5   29de     goto    0x1de            	GOTO	_00116_DS_
+0001c6   2a0b     goto    0x20b            	GOTO	_00123_DS_
+0001c7   29e5     goto    0x1e5            	GOTO	_00117_DS_
+0001c8   2a10     goto    0x210            	GOTO	_00124_DS_
+0001c9   29ec     goto    0x1ec            	GOTO	_00118_DS_
+0001ca   2a15     goto    0x215            	GOTO	_00125_DS_
+0001cb   29f3     goto    0x1f3            	GOTO	_00119_DS_
+0001cc   2a1a     goto    0x21a            	GOTO	_00126_DS_
+0001cd   29fa     goto    0x1fa            	GOTO	_00120_DS_
+0001ce   2a1f     goto    0x21f            	GOTO	_00127_DS_
+0001cf   29d0     goto    0x1d0            	GOTO	_00114_DS_
                                            _00114_DS_
                                            ;	.line	100; "MC30P6280.c"	MCR &= ~MCR_LVD_CFG_ALL;
-0001f0   0be1     movai   0xe1             	MOVAI	0xe1
-0001f1   1e88     andra   0x8              	ANDRA	_MCR
+0001d0   0be1     movai   0xe1             	MOVAI	0xe1
+0001d1   1e88     andra   0x8              	ANDRA	_MCR
                                            ;	.line	101; "MC30P6280.c"	MCR |= MCR_LVD_CFG_4V2;
-0001f2   0b1e     movai   0x1e             	MOVAI	0x1e
-0001f3   1788     orra    0x8              	ORRA	_MCR
+0001d2   0b1e     movai   0x1e             	MOVAI	0x1e
+0001d3   1788     orra    0x8              	ORRA	_MCR
                                            ;	.line	102; "MC30P6280.c"	cur_lvd_state = LVD_LEV_4V2_SWITCHING;
-0001f4   0b01     movai   0x1              	MOVAI	0x01
-0001f5   15b4     movra   0x34             	MOVRA	_cur_lvd_state
+0001d4   0b01     movai   0x1              	MOVAI	0x01
+0001d5   15b4     movra   0x34             	MOVRA	_cur_lvd_state
                                            ;	.line	103; "MC30P6280.c"	break;
-0001f6   2a42     goto    0x242            	GOTO	_00128_DS_
+0001d6   2a22     goto    0x222            	GOTO	_00128_DS_
                                            _00115_DS_
                                            ;	.line	105; "MC30P6280.c"	MCR &= ~MCR_LVD_CFG_ALL;
-0001f7   0be1     movai   0xe1             	MOVAI	0xe1
-0001f8   1e88     andra   0x8              	ANDRA	_MCR
+0001d7   0be1     movai   0xe1             	MOVAI	0xe1
+0001d8   1e88     andra   0x8              	ANDRA	_MCR
                                            ;	.line	106; "MC30P6280.c"	MCR |= MCR_LVD_CFG_4V0;
-0001f9   0b1c     movai   0x1c             	MOVAI	0x1c
-0001fa   1788     orra    0x8              	ORRA	_MCR
+0001d9   0b1c     movai   0x1c             	MOVAI	0x1c
+0001da   1788     orra    0x8              	ORRA	_MCR
                                            ;	.line	107; "MC30P6280.c"	cur_lvd_state = LVD_LEV_4V0_SWITCHING;
-0001fb   0b03     movai   0x3              	MOVAI	0x03
-0001fc   15b4     movra   0x34             	MOVRA	_cur_lvd_state
+0001db   0b03     movai   0x3              	MOVAI	0x03
+0001dc   15b4     movra   0x34             	MOVRA	_cur_lvd_state
                                            ;	.line	108; "MC30P6280.c"	break;
-0001fd   2a42     goto    0x242            	GOTO	_00128_DS_
+0001dd   2a22     goto    0x222            	GOTO	_00128_DS_
                                            _00116_DS_
                                            ;	.line	110; "MC30P6280.c"	MCR &= ~MCR_LVD_CFG_ALL;
-0001fe   0be1     movai   0xe1             	MOVAI	0xe1
-0001ff   1e88     andra   0x8              	ANDRA	_MCR
+0001de   0be1     movai   0xe1             	MOVAI	0xe1
+0001df   1e88     andra   0x8              	ANDRA	_MCR
                                            ;	.line	111; "MC30P6280.c"	MCR |= MCR_LVD_CFG_3V6;
-000200   0b1a     movai   0x1a             	MOVAI	0x1a
-000201   1788     orra    0x8              	ORRA	_MCR
+0001e0   0b1a     movai   0x1a             	MOVAI	0x1a
+0001e1   1788     orra    0x8              	ORRA	_MCR
                                            ;	.line	112; "MC30P6280.c"	cur_lvd_state = LVD_LEV_3V6_SWITCHING;
-000202   0b05     movai   0x5              	MOVAI	0x05
-000203   15b4     movra   0x34             	MOVRA	_cur_lvd_state
+0001e2   0b05     movai   0x5              	MOVAI	0x05
+0001e3   15b4     movra   0x34             	MOVRA	_cur_lvd_state
                                            ;	.line	113; "MC30P6280.c"	break;
-000204   2a42     goto    0x242            	GOTO	_00128_DS_
+0001e4   2a22     goto    0x222            	GOTO	_00128_DS_
                                            _00117_DS_
                                            ;	.line	115; "MC30P6280.c"	MCR &= ~MCR_LVD_CFG_ALL;
-000205   0be1     movai   0xe1             	MOVAI	0xe1
-000206   1e88     andra   0x8              	ANDRA	_MCR
+0001e5   0be1     movai   0xe1             	MOVAI	0xe1
+0001e6   1e88     andra   0x8              	ANDRA	_MCR
                                            ;	.line	116; "MC30P6280.c"	MCR |= MCR_LVD_CFG_3V3;
-000207   0b18     movai   0x18             	MOVAI	0x18
-000208   1788     orra    0x8              	ORRA	_MCR
+0001e7   0b18     movai   0x18             	MOVAI	0x18
+0001e8   1788     orra    0x8              	ORRA	_MCR
                                            ;	.line	117; "MC30P6280.c"	cur_lvd_state = LVD_LEV_3V3_SWITCHING;
-000209   0b07     movai   0x7              	MOVAI	0x07
-00020a   15b4     movra   0x34             	MOVRA	_cur_lvd_state
+0001e9   0b07     movai   0x7              	MOVAI	0x07
+0001ea   15b4     movra   0x34             	MOVRA	_cur_lvd_state
                                            ;	.line	118; "MC30P6280.c"	break;
-00020b   2a42     goto    0x242            	GOTO	_00128_DS_
+0001eb   2a22     goto    0x222            	GOTO	_00128_DS_
                                            _00118_DS_
                                            ;	.line	120; "MC30P6280.c"	MCR &= ~MCR_LVD_CFG_ALL;
-00020c   0be1     movai   0xe1             	MOVAI	0xe1
-00020d   1e88     andra   0x8              	ANDRA	_MCR
+0001ec   0be1     movai   0xe1             	MOVAI	0xe1
+0001ed   1e88     andra   0x8              	ANDRA	_MCR
                                            ;	.line	121; "MC30P6280.c"	MCR |= MCR_LVD_CFG_3V2;
-00020e   0b16     movai   0x16             	MOVAI	0x16
-00020f   1788     orra    0x8              	ORRA	_MCR
+0001ee   0b16     movai   0x16             	MOVAI	0x16
+0001ef   1788     orra    0x8              	ORRA	_MCR
                                            ;	.line	122; "MC30P6280.c"	cur_lvd_state = LVD_LEV_3V2_SWITCHING;
-000210   0b09     movai   0x9              	MOVAI	0x09
-000211   15b4     movra   0x34             	MOVRA	_cur_lvd_state
+0001f0   0b09     movai   0x9              	MOVAI	0x09
+0001f1   15b4     movra   0x34             	MOVRA	_cur_lvd_state
                                            ;	.line	123; "MC30P6280.c"	break;
-000212   2a42     goto    0x242            	GOTO	_00128_DS_
+0001f2   2a22     goto    0x222            	GOTO	_00128_DS_
                                            _00119_DS_
                                            ;	.line	125; "MC30P6280.c"	MCR &= ~MCR_LVD_CFG_ALL;
-000213   0be1     movai   0xe1             	MOVAI	0xe1
-000214   1e88     andra   0x8              	ANDRA	_MCR
+0001f3   0be1     movai   0xe1             	MOVAI	0xe1
+0001f4   1e88     andra   0x8              	ANDRA	_MCR
                                            ;	.line	126; "MC30P6280.c"	MCR |= MCR_LVD_CFG_3V0;
-000215   0b14     movai   0x14             	MOVAI	0x14
-000216   1788     orra    0x8              	ORRA	_MCR
+0001f5   0b14     movai   0x14             	MOVAI	0x14
+0001f6   1788     orra    0x8              	ORRA	_MCR
                                            ;	.line	127; "MC30P6280.c"	cur_lvd_state = LVD_LEV_3V0_SWITCHING;
-000217   0b0b     movai   0xb              	MOVAI	0x0b
-000218   15b4     movra   0x34             	MOVRA	_cur_lvd_state
+0001f7   0b0b     movai   0xb              	MOVAI	0x0b
+0001f8   15b4     movra   0x34             	MOVRA	_cur_lvd_state
                                            ;	.line	128; "MC30P6280.c"	break;
-000219   2a42     goto    0x242            	GOTO	_00128_DS_
+0001f9   2a22     goto    0x222            	GOTO	_00128_DS_
                                            _00120_DS_
                                            ;	.line	130; "MC30P6280.c"	MCR &= ~MCR_LVD_CFG_ALL;
-00021a   0be1     movai   0xe1             	MOVAI	0xe1
-00021b   1e88     andra   0x8              	ANDRA	_MCR
+0001fa   0be1     movai   0xe1             	MOVAI	0xe1
+0001fb   1e88     andra   0x8              	ANDRA	_MCR
                                            ;	.line	131; "MC30P6280.c"	MCR |= MCR_LVD_CFG_2V9;
-00021c   0b12     movai   0x12             	MOVAI	0x12
-00021d   1788     orra    0x8              	ORRA	_MCR
+0001fc   0b12     movai   0x12             	MOVAI	0x12
+0001fd   1788     orra    0x8              	ORRA	_MCR
                                            ;	.line	132; "MC30P6280.c"	cur_lvd_state = LVD_LEV_2V9_SWITCHING;
-00021e   0b0d     movai   0xd              	MOVAI	0x0d
-00021f   15b4     movra   0x34             	MOVRA	_cur_lvd_state
+0001fe   0b0d     movai   0xd              	MOVAI	0x0d
+0001ff   15b4     movra   0x34             	MOVRA	_cur_lvd_state
                                            ;	.line	133; "MC30P6280.c"	break;
-000220   2a42     goto    0x242            	GOTO	_00128_DS_
+000200   2a22     goto    0x222            	GOTO	_00128_DS_
                                            _00121_DS_
                                            ;	.line	136; "MC30P6280.c"	cur_lvd_state = LVD_LEV_4V2;
-000221   0b02     movai   0x2              	MOVAI	0x02
-000222   15b4     movra   0x34             	MOVRA	_cur_lvd_state
+000201   0b02     movai   0x2              	MOVAI	0x02
+000202   15b4     movra   0x34             	MOVRA	_cur_lvd_state
                                            ;	.line	137; "MC30P6280.c"	cur_cmp_bat_lev = BAT_LEV_4V2;
-000223   0b06     movai   0x6              	MOVAI	0x06
-000224   15ae     movra   0x2e             	MOVRA	_cur_cmp_bat_lev
+000203   0b06     movai   0x6              	MOVAI	0x06
+000204   15ae     movra   0x2e             	MOVRA	_cur_cmp_bat_lev
                                            ;	.line	138; "MC30P6280.c"	break;
-000225   2a42     goto    0x242            	GOTO	_00128_DS_
+000205   2a22     goto    0x222            	GOTO	_00128_DS_
                                            _00122_DS_
                                            ;	.line	140; "MC30P6280.c"	cur_lvd_state = LVD_LEV_4V0;
-000226   0b04     movai   0x4              	MOVAI	0x04
-000227   15b4     movra   0x34             	MOVRA	_cur_lvd_state
+000206   0b04     movai   0x4              	MOVAI	0x04
+000207   15b4     movra   0x34             	MOVRA	_cur_lvd_state
                                            ;	.line	141; "MC30P6280.c"	cur_cmp_bat_lev = BAT_LEV_4V0;
-000228   0b05     movai   0x5              	MOVAI	0x05
-000229   15ae     movra   0x2e             	MOVRA	_cur_cmp_bat_lev
+000208   0b05     movai   0x5              	MOVAI	0x05
+000209   15ae     movra   0x2e             	MOVRA	_cur_cmp_bat_lev
                                            ;	.line	142; "MC30P6280.c"	break;
-00022a   2a42     goto    0x242            	GOTO	_00128_DS_
+00020a   2a22     goto    0x222            	GOTO	_00128_DS_
                                            _00123_DS_
                                            ;	.line	144; "MC30P6280.c"	cur_lvd_state = LVD_LEV_3V6;
-00022b   0b06     movai   0x6              	MOVAI	0x06
-00022c   15b4     movra   0x34             	MOVRA	_cur_lvd_state
+00020b   0b06     movai   0x6              	MOVAI	0x06
+00020c   15b4     movra   0x34             	MOVRA	_cur_lvd_state
                                            ;	.line	145; "MC30P6280.c"	cur_cmp_bat_lev = BAT_LEV_3V6;
-00022d   0b04     movai   0x4              	MOVAI	0x04
-00022e   15ae     movra   0x2e             	MOVRA	_cur_cmp_bat_lev
+00020d   0b04     movai   0x4              	MOVAI	0x04
+00020e   15ae     movra   0x2e             	MOVRA	_cur_cmp_bat_lev
                                            ;	.line	146; "MC30P6280.c"	break;
-00022f   2a42     goto    0x242            	GOTO	_00128_DS_
+00020f   2a22     goto    0x222            	GOTO	_00128_DS_
                                            _00124_DS_
                                            ;	.line	148; "MC30P6280.c"	cur_lvd_state = LVD_LEV_3V3;
-000230   0b08     movai   0x8              	MOVAI	0x08
-000231   15b4     movra   0x34             	MOVRA	_cur_lvd_state
+000210   0b08     movai   0x8              	MOVAI	0x08
+000211   15b4     movra   0x34             	MOVRA	_cur_lvd_state
                                            ;	.line	149; "MC30P6280.c"	cur_cmp_bat_lev = BAT_LEV_3V3;
-000232   0b03     movai   0x3              	MOVAI	0x03
-000233   15ae     movra   0x2e             	MOVRA	_cur_cmp_bat_lev
+000212   0b03     movai   0x3              	MOVAI	0x03
+000213   15ae     movra   0x2e             	MOVRA	_cur_cmp_bat_lev
                                            ;	.line	150; "MC30P6280.c"	break;
-000234   2a42     goto    0x242            	GOTO	_00128_DS_
+000214   2a22     goto    0x222            	GOTO	_00128_DS_
                                            _00125_DS_
                                            ;	.line	152; "MC30P6280.c"	cur_lvd_state = LVD_LEV_3V2;
-000235   0b0a     movai   0xa              	MOVAI	0x0a
-000236   15b4     movra   0x34             	MOVRA	_cur_lvd_state
+000215   0b0a     movai   0xa              	MOVAI	0x0a
+000216   15b4     movra   0x34             	MOVRA	_cur_lvd_state
                                            ;	.line	153; "MC30P6280.c"	cur_cmp_bat_lev = BAT_LEV_3V2;
-000237   0b02     movai   0x2              	MOVAI	0x02
-000238   15ae     movra   0x2e             	MOVRA	_cur_cmp_bat_lev
+000217   0b02     movai   0x2              	MOVAI	0x02
+000218   15ae     movra   0x2e             	MOVRA	_cur_cmp_bat_lev
                                            ;	.line	154; "MC30P6280.c"	break;
-000239   2a42     goto    0x242            	GOTO	_00128_DS_
+000219   2a22     goto    0x222            	GOTO	_00128_DS_
                                            _00126_DS_
                                            ;	.line	156; "MC30P6280.c"	cur_lvd_state = LVD_LEV_3V0;
-00023a   0b0c     movai   0xc              	MOVAI	0x0c
-00023b   15b4     movra   0x34             	MOVRA	_cur_lvd_state
+00021a   0b0c     movai   0xc              	MOVAI	0x0c
+00021b   15b4     movra   0x34             	MOVRA	_cur_lvd_state
                                            ;	.line	157; "MC30P6280.c"	cur_cmp_bat_lev = BAT_LEV_3V0;
-00023c   0b01     movai   0x1              	MOVAI	0x01
-00023d   15ae     movra   0x2e             	MOVRA	_cur_cmp_bat_lev
+00021c   0b01     movai   0x1              	MOVAI	0x01
+00021d   15ae     movra   0x2e             	MOVRA	_cur_cmp_bat_lev
                                            ;	.line	158; "MC30P6280.c"	break;
-00023e   2a42     goto    0x242            	GOTO	_00128_DS_
+00021e   2a22     goto    0x222            	GOTO	_00128_DS_
                                            _00127_DS_
                                            ;	.line	160; "MC30P6280.c"	cur_lvd_state = LVD_LEV_2V9;
-00023f   0b0e     movai   0xe              	MOVAI	0x0e
-000240   15b4     movra   0x34             	MOVRA	_cur_lvd_state
+00021f   0b0e     movai   0xe              	MOVAI	0x0e
+000220   15b4     movra   0x34             	MOVRA	_cur_lvd_state
                                            ;	.line	161; "MC30P6280.c"	cur_cmp_bat_lev = BAT_LEV_2V9;
-000241   1dae     clrr    0x2e             	CLRR	_cur_cmp_bat_lev
+000221   1dae     clrr    0x2e             	CLRR	_cur_cmp_bat_lev
                                            _00128_DS_
                                            ;	.line	165; "MC30P6280.c"	if (cur_lvd_state == LVD_LEV_4V2 || cur_lvd_state == LVD_LEV_4V0 ||
-000242   1634     movar   0x34             	MOVAR	_cur_lvd_state
-000243   0802     xorai   0x2              	XORAI	0x02
-000244   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
-000245   2a47     goto    0x247            	GOTO	_00202_DS_
-000246   2a64     goto    0x264            	GOTO	_00142_DS_
+000222   1634     movar   0x34             	MOVAR	_cur_lvd_state
+000223   0802     xorai   0x2              	XORAI	0x02
+000224   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
+000225   2a27     goto    0x227            	GOTO	_00202_DS_
+000226   2a44     goto    0x244            	GOTO	_00142_DS_
                                            _00202_DS_
-000247   1634     movar   0x34             	MOVAR	_cur_lvd_state
-000248   0804     xorai   0x4              	XORAI	0x04
-000249   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
-00024a   2a4c     goto    0x24c            	GOTO	_00203_DS_
-00024b   2a64     goto    0x264            	GOTO	_00142_DS_
+000227   1634     movar   0x34             	MOVAR	_cur_lvd_state
+000228   0804     xorai   0x4              	XORAI	0x04
+000229   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
+00022a   2a2c     goto    0x22c            	GOTO	_00203_DS_
+00022b   2a44     goto    0x244            	GOTO	_00142_DS_
                                            _00203_DS_
                                            ;	.line	166; "MC30P6280.c"	cur_lvd_state == LVD_LEV_3V6 || cur_lvd_state == LVD_LEV_3V3 ||
-00024c   1634     movar   0x34             	MOVAR	_cur_lvd_state
-00024d   0806     xorai   0x6              	XORAI	0x06
-00024e   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
-00024f   2a51     goto    0x251            	GOTO	_00204_DS_
-000250   2a64     goto    0x264            	GOTO	_00142_DS_
+00022c   1634     movar   0x34             	MOVAR	_cur_lvd_state
+00022d   0806     xorai   0x6              	XORAI	0x06
+00022e   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
+00022f   2a31     goto    0x231            	GOTO	_00204_DS_
+000230   2a44     goto    0x244            	GOTO	_00142_DS_
                                            _00204_DS_
-000251   1634     movar   0x34             	MOVAR	_cur_lvd_state
-000252   0808     xorai   0x8              	XORAI	0x08
-000253   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
-000254   2a56     goto    0x256            	GOTO	_00205_DS_
-000255   2a64     goto    0x264            	GOTO	_00142_DS_
+000231   1634     movar   0x34             	MOVAR	_cur_lvd_state
+000232   0808     xorai   0x8              	XORAI	0x08
+000233   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
+000234   2a36     goto    0x236            	GOTO	_00205_DS_
+000235   2a44     goto    0x244            	GOTO	_00142_DS_
                                            _00205_DS_
                                            ;	.line	167; "MC30P6280.c"	cur_lvd_state == LVD_LEV_3V2 || cur_lvd_state == LVD_LEV_3V0 ||
-000256   1634     movar   0x34             	MOVAR	_cur_lvd_state
-000257   080a     xorai   0xa              	XORAI	0x0a
-000258   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
-000259   2a5b     goto    0x25b            	GOTO	_00206_DS_
-00025a   2a64     goto    0x264            	GOTO	_00142_DS_
+000236   1634     movar   0x34             	MOVAR	_cur_lvd_state
+000237   080a     xorai   0xa              	XORAI	0x0a
+000238   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
+000239   2a3b     goto    0x23b            	GOTO	_00206_DS_
+00023a   2a44     goto    0x244            	GOTO	_00142_DS_
                                            _00206_DS_
-00025b   1634     movar   0x34             	MOVAR	_cur_lvd_state
-00025c   080c     xorai   0xc              	XORAI	0x0c
-00025d   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
-00025e   2a60     goto    0x260            	GOTO	_00207_DS_
-00025f   2a64     goto    0x264            	GOTO	_00142_DS_
+00023b   1634     movar   0x34             	MOVAR	_cur_lvd_state
+00023c   080c     xorai   0xc              	XORAI	0x0c
+00023d   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
+00023e   2a40     goto    0x240            	GOTO	_00207_DS_
+00023f   2a44     goto    0x244            	GOTO	_00142_DS_
                                            _00207_DS_
                                            ;	.line	168; "MC30P6280.c"	cur_lvd_state == LVD_LEV_2V9) {
-000260   1634     movar   0x34             	MOVAR	_cur_lvd_state
-000261   080e     xorai   0xe              	XORAI	0x0e
-000262   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
-000263   2a85     goto    0x285            	GOTO	_00150_DS_
+000240   1634     movar   0x34             	MOVAR	_cur_lvd_state
+000241   080e     xorai   0xe              	XORAI	0x0e
+000242   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
+000243   2a65     goto    0x265            	GOTO	_00150_DS_
                                            _00142_DS_
                                            ;	.line	169; "MC30P6280.c"	if (LVDF) {
-000264   3288     jbset   0x8, 0x5         	JBSET	_MCRbits,5
-000265   2a75     goto    0x275            	GOTO	_00140_DS_
+000244   3288     jbset   0x8, 0x5         	JBSET	_MCRbits,5
+000245   2a55     goto    0x255            	GOTO	_00140_DS_
                                            ;	.line	175; "MC30P6280.c"	if (tmp_bat_lev >= cur_cmp_bat_lev) {
-000266   162e     movar   0x2e             	MOVAR	_cur_cmp_bat_lev
-000267   122f     rsubar  0x2f             	RSUBAR	_tmp_bat_lev
-000268   3003     jbset   0x3, 0           	JBSET	STATUS,0
-000269   2a85     goto    0x285            	GOTO	_00150_DS_
+000246   162e     movar   0x2e             	MOVAR	_cur_cmp_bat_lev
+000247   122f     rsubar  0x2f             	RSUBAR	_tmp_bat_lev
+000248   3003     jbset   0x3, 0           	JBSET	STATUS,0
+000249   2a65     goto    0x265            	GOTO	_00150_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
                                            ;	.line	177; "MC30P6280.c"	if (cur_cmp_bat_lev != BAT_LEV_2V9) {
-00026a   0b00     movai   0                	MOVAI	0x00
-00026b   172e     orar    0x2e             	ORAR	_cur_cmp_bat_lev
-00026c   3503     jbclr   0x3, 0x2         	JBCLR	STATUS,2
-00026d   2a73     goto    0x273            	GOTO	_00130_DS_
+00024a   0b00     movai   0                	MOVAI	0x00
+00024b   172e     orar    0x2e             	ORAR	_cur_cmp_bat_lev
+00024c   3503     jbclr   0x3, 0x2         	JBCLR	STATUS,2
+00024d   2a53     goto    0x253            	GOTO	_00130_DS_
                                            ;	.line	178; "MC30P6280.c"	tmp_bat_lev -= 1;
-00026e   162f     movar   0x2f             	MOVAR	_tmp_bat_lev
-00026f   1597     movra   0x17             	MOVRA	r0x1022
-000270   1b17     decar   0x17             	DECAR	r0x1022
-000271   15af     movra   0x2f             	MOVRA	_tmp_bat_lev
-000272   2a85     goto    0x285            	GOTO	_00150_DS_
+00024e   162f     movar   0x2f             	MOVAR	_tmp_bat_lev
+00024f   1597     movra   0x17             	MOVRA	r0x1022
+000250   1b17     decar   0x17             	DECAR	r0x1022
+000251   15af     movra   0x2f             	MOVRA	_tmp_bat_lev
+000252   2a65     goto    0x265            	GOTO	_00150_DS_
                                            _00130_DS_
                                            ;	.line	180; "MC30P6280.c"	tmp_bat_lev = BAT_LEV_2V9;
-000273   1daf     clrr    0x2f             	CLRR	_tmp_bat_lev
-000274   2a85     goto    0x285            	GOTO	_00150_DS_
+000253   1daf     clrr    0x2f             	CLRR	_tmp_bat_lev
+000254   2a65     goto    0x265            	GOTO	_00150_DS_
                                            _00140_DS_
                                            ;	.line	192; "MC30P6280.c"	if (tmp_bat_lev < cur_cmp_bat_lev) {
-000275   162e     movar   0x2e             	MOVAR	_cur_cmp_bat_lev
-000276   122f     rsubar  0x2f             	RSUBAR	_tmp_bat_lev
-000277   3403     jbclr   0x3, 0           	JBCLR	STATUS,0
-000278   2a85     goto    0x285            	GOTO	_00150_DS_
+000255   162e     movar   0x2e             	MOVAR	_cur_cmp_bat_lev
+000256   122f     rsubar  0x2f             	RSUBAR	_tmp_bat_lev
+000257   3403     jbclr   0x3, 0           	JBCLR	STATUS,0
+000258   2a65     goto    0x265            	GOTO	_00150_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
                                            ;	.line	194; "MC30P6280.c"	if (cur_cmp_bat_lev != BAT_LEV_4V2) {
-000279   162e     movar   0x2e             	MOVAR	_cur_cmp_bat_lev
-00027a   0806     xorai   0x6              	XORAI	0x06
-00027b   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
-00027c   2a7e     goto    0x27e            	GOTO	_00210_DS_
-00027d   2a83     goto    0x283            	GOTO	_00135_DS_
+000259   162e     movar   0x2e             	MOVAR	_cur_cmp_bat_lev
+00025a   0806     xorai   0x6              	XORAI	0x06
+00025b   3103     jbset   0x3, 0x2         	JBSET	STATUS,2
+00025c   2a5e     goto    0x25e            	GOTO	_00210_DS_
+00025d   2a63     goto    0x263            	GOTO	_00135_DS_
                                            _00210_DS_
                                            ;	.line	195; "MC30P6280.c"	tmp_bat_lev += 1;
-00027e   162f     movar   0x2f             	MOVAR	_tmp_bat_lev
-00027f   1597     movra   0x17             	MOVRA	r0x1022
-000280   1917     incar   0x17             	INCAR	r0x1022
-000281   15af     movra   0x2f             	MOVRA	_tmp_bat_lev
-000282   2a85     goto    0x285            	GOTO	_00150_DS_
+00025e   162f     movar   0x2f             	MOVAR	_tmp_bat_lev
+00025f   1597     movra   0x17             	MOVRA	r0x1022
+000260   1917     incar   0x17             	INCAR	r0x1022
+000261   15af     movra   0x2f             	MOVRA	_tmp_bat_lev
+000262   2a65     goto    0x265            	GOTO	_00150_DS_
                                            _00135_DS_
                                            ;	.line	197; "MC30P6280.c"	tmp_bat_lev = BAT_LEV_4V2;
-000283   0b06     movai   0x6              	MOVAI	0x06
-000284   15af     movra   0x2f             	MOVRA	_tmp_bat_lev
+000263   0b06     movai   0x6              	MOVAI	0x06
+000264   15af     movra   0x2f             	MOVRA	_tmp_bat_lev
                                            _00150_DS_
                                            ;	.line	202; "MC30P6280.c"	}
-000285   000c     return                   	RETURN	
+000265   000c     return                   	RETURN	
                                            ; exit point of _lvd_scan
                                            
                                            ;***
@@ -1595,19 +1548,19 @@ Address  Value    Disassembly              Source
                                            _IO_Init	;Function start
                                            ; 2 exit points
                                            ;	.line	81; "MC30P6280.c"	P1 = 0x00;    // 1:input 0:output
-000286   1d86     clrr    0x6              	CLRR	_P1
+000266   1d86     clrr    0x6              	CLRR	_P1
                                            ;	.line	82; "MC30P6280.c"	DDR1 = 0x00;  // 1:input 0:output
-000287   1dc6     clrr    0x46             	CLRR	_DDR1
+000267   1dc6     clrr    0x46             	CLRR	_DDR1
                                            ;	.line	83; "MC30P6280.c"	PUCON = 0xff; // 0:Effective 1:invalid
-000288   0bff     movai   0xff             	MOVAI	0xff
-000289   158d     movra   0xd              	MOVRA	_PUCON
+000268   0bff     movai   0xff             	MOVAI	0xff
+000269   158d     movra   0xd              	MOVRA	_PUCON
                                            ;	.line	84; "MC30P6280.c"	PDCON = 0xff; // 0:Effective 1:invalid
-00028a   0bff     movai   0xff             	MOVAI	0xff
-00028b   158b     movra   0xb              	MOVRA	_PDCON
+00026a   0bff     movai   0xff             	MOVAI	0xff
+00026b   158b     movra   0xb              	MOVRA	_PDCON
                                            ;	.line	85; "MC30P6280.c"	ODCON = 0x00; // 0:推挽输出  1:开漏输出
-00028c   1d8c     clrr    0xc              	CLRR	_ODCON
+00026c   1d8c     clrr    0xc              	CLRR	_ODCON
                                            ;	.line	86; "MC30P6280.c"	}
-00028d   000c     return                   	RETURN	
+00026d   000c     return                   	RETURN	
                                            ; exit point of _IO_Init
                                            
                                            ;***
@@ -1621,29 +1574,29 @@ Address  Value    Disassembly              Source
                                            ; 2 exit points
                                            ;	.line	70; "MC30P6280.c"	__endasm;
                                            	;
-00028e   0b3f     movai   0x3f             	movai	0x3F;
-00028f   1584     movra   0x4              	movra	FSR;
-000290   0b2f     movai   0x2f             	movai	47;
-000291   15bf     movra   0x3f             	movra	0x3F;
-000292   1b84     decr    0x4              	decr	FSR;
-000293   1d80     clrr    0                	clrr	INDF;
-000294   1abf     djzr    0x3f             	djzr	0x3F;
-000295   2a92     goto    0x292            	goto	$ - 3;
-000296   1dbf     clrr    0x3f             	clrr	0x3F;
+00026e   0b3f     movai   0x3f             	movai	0x3F;
+00026f   1584     movra   0x4              	movra	FSR;
+000270   0b2f     movai   0x2f             	movai	47;
+000271   15bf     movra   0x3f             	movra	0x3F;
+000272   1b84     decr    0x4              	decr	FSR;
+000273   1d80     clrr    0                	clrr	INDF;
+000274   1abf     djzr    0x3f             	djzr	0x3F;
+000275   2a72     goto    0x272            	goto	$ - 3;
+000276   1dbf     clrr    0x3f             	clrr	0x3F;
                                            	
                                            ;	.line	71; "MC30P6280.c"	}
-000297   000c     return                   	RETURN	
+000277   000c     return                   	RETURN	
                                            ; exit point of _C_RAM
                                            
                                            
                                            ;	code size estimation:
-                                           ;	  636+    0 =   636 instructions ( 1272 byte)
+                                           ;	  604+    0 =   604 instructions ( 1208 byte)
                                            
                                            	end
                                            ;--------------------------------------------------------
                                            ; File Created by SN-SDCC : SinoMCU ANSI-C Compiler
                                            ; Version 2.0.0 (Dec 11 2019) (MINGW32)
-                                           ; This file was generated Mon May 18 17:49:30 2026
+                                           ; This file was generated Thu May 21 18:48:24 2026
                                            ;--------------------------------------------------------
                                            ; MC30 port for the RISC core
                                            ;--------------------------------------------------------
@@ -1823,16 +1776,16 @@ Address  Value    Disassembly              Source
                                            ;; Starting pCode block
                                            _timer0_init	;Function start
                                            ; 2 exit points
-                                           ;	.line	16; "timer0.c"	T0CR = 0x05; // 时钟为CPU时钟，定时器 64 分频
-0002fa   0b05     movai   0x5              	MOVAI	0x05
-0002fb   15c1     movra   0x41             	MOVRA	_T0CR
-                                           ;	.line	17; "timer0.c"	T0CNT = (u8)(255 - 125);
-0002fc   0b82     movai   0x82             	MOVAI	0x82
-0002fd   1581     movra   0x1              	MOVRA	_T0CNT
-                                           ;	.line	18; "timer0.c"	T0IE = 1;
-0002fe   380e     bset    0xe, 0           	BSET	_INTEbits,0
-                                           ;	.line	19; "timer0.c"	}
-0002ff   000c     return                   	RETURN	
+                                           ;	.line	17; "timer0.c"	T0CR = 0x05; // 时钟为CPU时钟，定时器 64 分频
+0002da   0b05     movai   0x5              	MOVAI	0x05
+0002db   15c1     movra   0x41             	MOVRA	_T0CR
+                                           ;	.line	18; "timer0.c"	T0CNT = (u8)(255 - 125);
+0002dc   0b82     movai   0x82             	MOVAI	0x82
+0002dd   1581     movra   0x1              	MOVRA	_T0CNT
+                                           ;	.line	19; "timer0.c"	T0IE = 1;
+0002de   380e     bset    0xe, 0           	BSET	_INTEbits,0
+                                           ;	.line	20; "timer0.c"	}
+0002df   000c     return                   	RETURN	
                                            ; exit point of _timer0_init
                                            
                                            
@@ -1843,7 +1796,7 @@ Address  Value    Disassembly              Source
                                            ;--------------------------------------------------------
                                            ; File Created by SN-SDCC : SinoMCU ANSI-C Compiler
                                            ; Version 2.0.0 (Dec 11 2019) (MINGW32)
-                                           ; This file was generated Mon May 18 17:49:31 2026
+                                           ; This file was generated Thu May 21 18:48:24 2026
                                            ;--------------------------------------------------------
                                            ; MC30 port for the RISC core
                                            ;--------------------------------------------------------
@@ -2023,17 +1976,17 @@ Address  Value    Disassembly              Source
                                            ;; Starting pCode block
                                            _timer1_init	;Function start
                                            ; 2 exit points
-                                           ;	.line	6; "timer1.c"	T1CR = 0x03; // Fcpu 8分频
+                                           ;	.line	7; "timer1.c"	T1CR = 0x03; // Fcpu 8分频
 000001   0b03     movai   0x3              	MOVAI	0x03
 000002   15cc     movra   0x4c             	MOVRA	_T1CR
-                                           ;	.line	8; "timer1.c"	T1LOAD = 100 - 1; // 100us
+                                           ;	.line	9; "timer1.c"	T1LOAD = 100 - 1; // 100us
 000003   0b63     movai   0x63             	MOVAI	0x63
 000004   15ce     movra   0x4e             	MOVRA	_T1LOAD
-                                           ;	.line	9; "timer1.c"	T1EN = 1;
+                                           ;	.line	10; "timer1.c"	T1EN = 1;
 000005   3bcc     bset    0x4c, 0x7        	BSET	_T1CRbits,7
-                                           ;	.line	10; "timer1.c"	T1IE = 1;
+                                           ;	.line	11; "timer1.c"	T1IE = 1;
 000006   38cb     bset    0x4b, 0x1        	BSET	_TMRCRbits,1
-                                           ;	.line	11; "timer1.c"	}
+                                           ;	.line	12; "timer1.c"	}
 000007   000c     return                   	RETURN	
                                            ; exit point of _timer1_init
                                            
@@ -2045,7 +1998,7 @@ Address  Value    Disassembly              Source
                                            ;--------------------------------------------------------
                                            ; File Created by SN-SDCC : SinoMCU ANSI-C Compiler
                                            ; Version 2.0.0 (Dec 11 2019) (MINGW32)
-                                           ; This file was generated Mon May 18 17:49:30 2026
+                                           ; This file was generated Thu May 21 18:48:24 2026
                                            ;--------------------------------------------------------
                                            ; MC30 port for the RISC core
                                            ;--------------------------------------------------------
@@ -2186,8 +2139,8 @@ Address  Value    Disassembly              Source
                                            r0x101F	res	1
                                            r0x1021	res	1
                                            r0x1020	res	1
-                                           _int_isr_cnt_196608_96	res	1
-                                           _int_isr_cnt_196608_115	res	1
+                                           _int_isr_cnt_196608_91	res	1
+                                           _int_isr_cnt_196608_110	res	1
                                            ;--------------------------------------------------------
                                            ; initialized data
                                            ;--------------------------------------------------------
@@ -2425,61 +2378,61 @@ Address  Value    Disassembly              Source
                                            ;; Starting pCode block
                                            _int_isr	;Function start
                                            ; 0 exit points
-                                           ;	.line	651; "MC30P6280.c"	__endasm;
+                                           ;	.line	673; "MC30P6280.c"	__endasm;
                                            	;
                                            	movra	_abuf;
                                            	swapar	_STATUS;
                                            	movra	_statusbuf;
                                            	
-                                           ;	.line	653; "MC30P6280.c"	if ((T0IF) && (T0IE)) {
+                                           ;	.line	675; "MC30P6280.c"	if ((T0IF) && (T0IE)) {
                                            	JBSET	_INTFbits,0
-                                           	GOTO	_00482_DS_
+                                           	GOTO	_00439_DS_
                                            	JBSET	_INTEbits,0
-                                           	GOTO	_00482_DS_
-                                           ;	.line	654; "MC30P6280.c"	T0IF = 0;
+                                           	GOTO	_00439_DS_
+                                           ;	.line	676; "MC30P6280.c"	T0IF = 0;
                                            	BCLR	_INTFbits,0
-                                           ;	.line	655; "MC30P6280.c"	T0CNT = (u8)(255 - 125); // T0 目前1ms产生一次中断
+                                           ;	.line	677; "MC30P6280.c"	T0CNT = (u8)(255 - 125); // T0 目前1ms产生一次中断
                                            	MOVAI	0x82
                                            	MOVRA	_T0CNT
-                                           ;	.line	659; "MC30P6280.c"	cnt++;
-                                           	INCR	_int_isr_cnt_196608_96
+                                           ;	.line	681; "MC30P6280.c"	cnt++;
+                                           	INCR	_int_isr_cnt_196608_91
                                            ;;unsigned compare: left < lit(0xA=10), size=1
-                                           ;	.line	660; "MC30P6280.c"	if (cnt >= 10) {
+                                           ;	.line	682; "MC30P6280.c"	if (cnt >= 10) {
                                            	MOVAI	0x0a
-                                           	RSUBAR	_int_isr_cnt_196608_96
+                                           	RSUBAR	_int_isr_cnt_196608_91
                                            	JBSET	STATUS,0
-                                           	GOTO	_00473_DS_
+                                           	GOTO	_00430_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
-                                           ;	.line	662; "MC30P6280.c"	cnt = 0;
-                                           	CLRR	_int_isr_cnt_196608_96
-                                           ;	.line	665; "MC30P6280.c"	key_scan();
+                                           ;	.line	684; "MC30P6280.c"	cnt = 0;
+                                           	CLRR	_int_isr_cnt_196608_91
+                                           ;	.line	687; "MC30P6280.c"	key_scan();
                                            	CALL	_key_scan
-                                           ;	.line	667; "MC30P6280.c"	led_status_handle();
+                                           ;	.line	689; "MC30P6280.c"	led_status_handle();
                                            	CALL	_led_status_handle
-                                           ;	.line	669; "MC30P6280.c"	if (flag_is_dev_working) {
+                                           ;	.line	691; "MC30P6280.c"	if (flag_is_dev_working) {
                                            	JBSET	_flag1,6
-                                           	GOTO	_00456_DS_
+                                           	GOTO	_00413_DS_
                                            ;;unsigned compare: left < lit(0x2BF20=180000), size=4
-                                           ;	.line	671; "MC30P6280.c"	if (pwr_off_cnt < ((u32)30 * 60 * 1000 / 10)) {
+                                           ;	.line	693; "MC30P6280.c"	if (pwr_off_cnt < ((u32)30 * 60 * 1000 / 10)) {
                                            	MOVAI	0x00
                                            	RSUBAR	(_pwr_off_cnt + 3)
                                            	JBSET	STATUS,2
-                                           	GOTO	_00564_DS_
+                                           	GOTO	_00521_DS_
                                            	MOVAI	0x02
                                            	RSUBAR	(_pwr_off_cnt + 2)
                                            	JBSET	STATUS,2
-                                           	GOTO	_00564_DS_
+                                           	GOTO	_00521_DS_
                                            	MOVAI	0xbf
                                            	RSUBAR	(_pwr_off_cnt + 1)
                                            	JBSET	STATUS,2
-                                           	GOTO	_00564_DS_
+                                           	GOTO	_00521_DS_
                                            	MOVAI	0x20
                                            	RSUBAR	_pwr_off_cnt
-                                           _00564_DS_
+                                           _00521_DS_
                                            	JBCLR	STATUS,0
-                                           	GOTO	_00457_DS_
+                                           	GOTO	_00414_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
-                                           ;	.line	672; "MC30P6280.c"	pwr_off_cnt++;
+                                           ;	.line	694; "MC30P6280.c"	pwr_off_cnt++;
                                            	INCR	_pwr_off_cnt
                                            	JBCLR	STATUS,2
                                            	INCR	(_pwr_off_cnt + 1)
@@ -2487,131 +2440,131 @@ Address  Value    Disassembly              Source
                                            	INCR	(_pwr_off_cnt + 2)
                                            	JBCLR	STATUS,2
                                            	INCR	(_pwr_off_cnt + 3)
-                                           	GOTO	_00457_DS_
-                                           _00456_DS_
-                                           ;	.line	676; "MC30P6280.c"	pwr_off_cnt = 0;
+                                           	GOTO	_00414_DS_
+                                           _00413_DS_
+                                           ;	.line	698; "MC30P6280.c"	pwr_off_cnt = 0;
                                            	CLRR	_pwr_off_cnt
                                            	CLRR	(_pwr_off_cnt + 1)
                                            	CLRR	(_pwr_off_cnt + 2)
                                            	CLRR	(_pwr_off_cnt + 3)
-                                           _00457_DS_
-                                           ;	.line	680; "MC30P6280.c"	if (flag_is_dev_working && bat_lev == BAT_LEV_2V9) {
+                                           _00414_DS_
+                                           ;	.line	702; "MC30P6280.c"	if (flag_is_dev_working && bat_lev == BAT_LEV_2V9) {
                                            	JBSET	_flag1,6
-                                           	GOTO	_00459_DS_
+                                           	GOTO	_00416_DS_
                                            	MOVAI	0x00
                                            	ORAR	_bat_lev
                                            	JBSET	STATUS,2
-                                           	GOTO	_00459_DS_
-                                           ;	.line	681; "MC30P6280.c"	pen_pwr_off();           // 断开笔头的供电
+                                           	GOTO	_00416_DS_
+                                           ;	.line	703; "MC30P6280.c"	pen_pwr_off();           // 断开笔头的供电
                                            	CALL	_pen_pwr_off
-                                           ;	.line	682; "MC30P6280.c"	led_all_off();           // 关闭所有指示灯
+                                           ;	.line	704; "MC30P6280.c"	led_all_off();           // 关闭所有指示灯
                                            	CALL	_led_all_off
-                                           ;	.line	683; "MC30P6280.c"	flag_is_dev_working = 0; // 表示设备关闭
+                                           ;	.line	705; "MC30P6280.c"	flag_is_dev_working = 0; // 表示设备关闭
                                            	BCLR	_flag1,6
-                                           _00459_DS_
-                                           ;	.line	690; "MC30P6280.c"	if (CHARGE_PIN) {
+                                           _00416_DS_
+                                           ;	.line	712; "MC30P6280.c"	if (CHARGE_PIN) {
                                            	JBSET	_P1bits,3
-                                           	GOTO	_00464_DS_
-                                           ;	.line	695; "MC30P6280.c"	if (0 == flag_is_in_charging) {
+                                           	GOTO	_00421_DS_
+                                           ;	.line	717; "MC30P6280.c"	if (0 == flag_is_in_charging) {
                                            	JBCLR	_flag1,0
-                                           	GOTO	_00465_DS_
-                                           ;	.line	700; "MC30P6280.c"	tmp_bat_lev = BAT_LEV_2V9;
+                                           	GOTO	_00422_DS_
+                                           ;	.line	722; "MC30P6280.c"	tmp_bat_lev = BAT_LEV_2V9;
                                            	CLRR	_tmp_bat_lev
-                                           ;	.line	701; "MC30P6280.c"	bat_lev = BAT_LEV_2V9;
+                                           ;	.line	723; "MC30P6280.c"	bat_lev = BAT_LEV_2V9;
                                            	CLRR	_bat_lev
-                                           ;	.line	702; "MC30P6280.c"	pen_pwr_off(); // 断开笔头的供电
+                                           ;	.line	724; "MC30P6280.c"	pen_pwr_off(); // 断开笔头的供电
                                            	CALL	_pen_pwr_off
-                                           ;	.line	704; "MC30P6280.c"	flag_led_1_on = 0;
+                                           ;	.line	726; "MC30P6280.c"	flag_led_1_on = 0;
                                            	BCLR	_flag1,2
-                                           ;	.line	705; "MC30P6280.c"	flag_led_2_on = 0;
+                                           ;	.line	727; "MC30P6280.c"	flag_led_2_on = 0;
                                            	BCLR	_flag1,3
-                                           ;	.line	706; "MC30P6280.c"	flag_led_3_on = 0;
+                                           ;	.line	728; "MC30P6280.c"	flag_led_3_on = 0;
                                            	BCLR	_flag1,4
-                                           ;	.line	707; "MC30P6280.c"	flag_led_4_on = 0;
+                                           ;	.line	729; "MC30P6280.c"	flag_led_4_on = 0;
                                            	BCLR	_flag1,5
-                                           ;	.line	708; "MC30P6280.c"	flag_is_dev_working = 0; // 表示设备关闭
+                                           ;	.line	730; "MC30P6280.c"	flag_is_dev_working = 0; // 表示设备关闭
                                            	BCLR	_flag1,6
-                                           ;	.line	710; "MC30P6280.c"	flag_is_charge_begin = 1;
+                                           ;	.line	732; "MC30P6280.c"	flag_is_charge_begin = 1;
                                            	BSET	_flag1,1
-                                           ;	.line	711; "MC30P6280.c"	charge_anim_phase = 0;
+                                           ;	.line	733; "MC30P6280.c"	charge_anim_phase = 0;
                                            	CLRR	_charge_anim_phase
-                                           ;	.line	712; "MC30P6280.c"	charge_fully_cnt = 0; // 刚进入充电，清空充满电的计数值
+                                           ;	.line	734; "MC30P6280.c"	charge_fully_cnt = 0; // 刚进入充电，清空充满电的计数值
                                            	CLRR	_charge_fully_cnt
                                            	CLRR	(_charge_fully_cnt + 1)
-                                           ;	.line	713; "MC30P6280.c"	flag_is_in_charging = 1;
+                                           ;	.line	735; "MC30P6280.c"	flag_is_in_charging = 1;
                                            	BSET	_flag1,0
-                                           	GOTO	_00465_DS_
-                                           _00464_DS_
-                                           ;	.line	724; "MC30P6280.c"	flag_is_in_charging = 0;
+                                           	GOTO	_00422_DS_
+                                           _00421_DS_
+                                           ;	.line	746; "MC30P6280.c"	flag_is_in_charging = 0;
                                            	BCLR	_flag1,0
-                                           _00465_DS_
-                                           ;	.line	731; "MC30P6280.c"	if ((CHARGE_PIN == 0) && (flag_is_dev_working == 0)) {
+                                           _00422_DS_
+                                           ;	.line	753; "MC30P6280.c"	if ((CHARGE_PIN == 0) && (flag_is_dev_working == 0)) {
                                            	JBCLR	_P1bits,3
-                                           	GOTO	_00469_DS_
+                                           	GOTO	_00426_DS_
                                            	JBCLR	_flag1,6
-                                           	GOTO	_00469_DS_
+                                           	GOTO	_00426_DS_
                                            ;;unsigned compare: left < lit(0xFF=255), size=1
-                                           ;	.line	732; "MC30P6280.c"	if (into_low_power_cnt < 255) {
+                                           ;	.line	754; "MC30P6280.c"	if (into_low_power_cnt < 255) {
                                            	MOVAI	0xff
                                            	RSUBAR	_into_low_power_cnt
                                            	JBCLR	STATUS,0
-                                           	GOTO	_00473_DS_
+                                           	GOTO	_00430_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
-                                           ;	.line	733; "MC30P6280.c"	into_low_power_cnt++;
+                                           ;	.line	755; "MC30P6280.c"	into_low_power_cnt++;
                                            	INCR	_into_low_power_cnt
-                                           	GOTO	_00473_DS_
-                                           _00469_DS_
-                                           ;	.line	736; "MC30P6280.c"	into_low_power_cnt = 0;
+                                           	GOTO	_00430_DS_
+                                           _00426_DS_
+                                           ;	.line	758; "MC30P6280.c"	into_low_power_cnt = 0;
                                            	CLRR	_into_low_power_cnt
-                                           _00473_DS_
-                                           ;	.line	743; "MC30P6280.c"	if (flag_is_dev_working) {
+                                           _00430_DS_
+                                           ;	.line	765; "MC30P6280.c"	if (flag_is_dev_working) {
                                            	JBSET	_flag1,6
-                                           	GOTO	_00479_DS_
-                                           ;	.line	745; "MC30P6280.c"	if (bat_lev >= tmp_bat_lev) {
+                                           	GOTO	_00436_DS_
+                                           ;	.line	767; "MC30P6280.c"	if (bat_lev >= tmp_bat_lev) {
                                            	MOVAR	_tmp_bat_lev
                                            	RSUBAR	_bat_lev
                                            	JBSET	STATUS,0
-                                           	GOTO	_00482_DS_
+                                           	GOTO	_00439_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
-                                           ;	.line	746; "MC30P6280.c"	bat_lev = tmp_bat_lev;
+                                           ;	.line	768; "MC30P6280.c"	bat_lev = tmp_bat_lev;
                                            	MOVAR	_tmp_bat_lev
                                            	MOVRA	_bat_lev
-                                           	GOTO	_00482_DS_
-                                           _00479_DS_
-                                           ;	.line	751; "MC30P6280.c"	if (bat_lev <= tmp_bat_lev) {
+                                           	GOTO	_00439_DS_
+                                           _00436_DS_
+                                           ;	.line	773; "MC30P6280.c"	if (bat_lev <= tmp_bat_lev) {
                                            	MOVAR	_bat_lev
                                            	RSUBAR	_tmp_bat_lev
                                            	JBSET	STATUS,0
-                                           	GOTO	_00482_DS_
+                                           	GOTO	_00439_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
-                                           ;	.line	752; "MC30P6280.c"	bat_lev = tmp_bat_lev;
+                                           ;	.line	774; "MC30P6280.c"	bat_lev = tmp_bat_lev;
                                            	MOVAR	_tmp_bat_lev
                                            	MOVRA	_bat_lev
-                                           _00482_DS_
-                                           ;	.line	759; "MC30P6280.c"	if ((T1IF) && (T1IE)) {
+                                           _00439_DS_
+                                           ;	.line	781; "MC30P6280.c"	if ((T1IF) && (T1IE)) {
                                            	JBSET	_TMRCRbits,0
-                                           	GOTO	_00487_DS_
+                                           	GOTO	_00444_DS_
                                            	JBSET	_TMRCRbits,1
-                                           	GOTO	_00487_DS_
-                                           ;	.line	760; "MC30P6280.c"	T1IF = 0;
+                                           	GOTO	_00444_DS_
+                                           ;	.line	782; "MC30P6280.c"	T1IF = 0;
                                            	BCLR	_TMRCRbits,0
-                                           ;	.line	764; "MC30P6280.c"	led_refresh();
+                                           ;	.line	786; "MC30P6280.c"	led_refresh();
                                            	CALL	_led_refresh
-                                           ;	.line	768; "MC30P6280.c"	cnt++;
-                                           	INCR	_int_isr_cnt_196608_115
+                                           ;	.line	790; "MC30P6280.c"	cnt++;
+                                           	INCR	_int_isr_cnt_196608_110
                                            ;;unsigned compare: left < lit(0x3=3), size=1
-                                           ;	.line	769; "MC30P6280.c"	if (cnt >= 3) {
+                                           ;	.line	791; "MC30P6280.c"	if (cnt >= 3) {
                                            	MOVAI	0x03
-                                           	RSUBAR	_int_isr_cnt_196608_115
+                                           	RSUBAR	_int_isr_cnt_196608_110
                                            	JBSET	STATUS,0
-                                           	GOTO	_00487_DS_
+                                           	GOTO	_00444_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
-                                           ;	.line	770; "MC30P6280.c"	cnt = 0;
-                                           	CLRR	_int_isr_cnt_196608_115
-                                           ;	.line	771; "MC30P6280.c"	lvd_scan();
+                                           ;	.line	792; "MC30P6280.c"	cnt = 0;
+                                           	CLRR	_int_isr_cnt_196608_110
+                                           ;	.line	793; "MC30P6280.c"	lvd_scan();
                                            	CALL	_lvd_scan
-                                           _00487_DS_
-                                           ;	.line	793; "MC30P6280.c"	__endasm;
+                                           _00444_DS_
+                                           ;	.line	815; "MC30P6280.c"	__endasm;
                                            	;
                                            	swapar	_statusbuf;
                                            	movra	_STATUS;
@@ -2619,7 +2572,7 @@ Address  Value    Disassembly              Source
                                            	swapar	_abuf;
                                            	
                                            END_OF_INTERRUPT
-                                           ;	.line	794; "MC30P6280.c"	}
+                                           ;	.line	816; "MC30P6280.c"	}
                                            	RETIE	
                                            
                                            ;--------------------------------------------------------
@@ -2650,109 +2603,109 @@ Address  Value    Disassembly              Source
                                            ;; Starting pCode block
                                            _main	;Function start
                                            ; 2 exit points
-                                           ;	.line	531; "MC30P6280.c"	Sys_Init();
+                                           ;	.line	552; "MC30P6280.c"	Sys_Init();
                                            	CALL	_Sys_Init
-                                           ;	.line	532; "MC30P6280.c"	user_init();
+                                           ;	.line	553; "MC30P6280.c"	user_init();
                                            	CALL	_user_init
-                                           ;	.line	534; "MC30P6280.c"	into_low_power_cnt = (u8)((u16)2000 / 10); // 确保一上电就进入低功耗
+                                           ;	.line	555; "MC30P6280.c"	into_low_power_cnt = (u8)((u16)2000 / 10); // 确保一上电就进入低功耗
                                            	MOVAI	0xc8
                                            	MOVRA	_into_low_power_cnt
-                                           _00420_DS_
-                                           ;	.line	544; "MC30P6280.c"	if ((flag_is_dev_working && pwr_off_cnt >= ((u32)30 * 60 * 1000 / 10)) ||
+                                           _00377_DS_
+                                           ;	.line	565; "MC30P6280.c"	if ((flag_is_dev_working && pwr_off_cnt >= ((u32)30 * 60 * 1000 / 10)) ||
                                            	JBSET	_flag1,6
-                                           	GOTO	_00418_DS_
+                                           	GOTO	_00375_DS_
                                            ;;unsigned compare: left < lit(0x2BF20=180000), size=4
                                            	MOVAI	0x00
                                            	RSUBAR	(_pwr_off_cnt + 3)
                                            	JBSET	STATUS,2
-                                           	GOTO	_00448_DS_
+                                           	GOTO	_00405_DS_
                                            	MOVAI	0x02
                                            	RSUBAR	(_pwr_off_cnt + 2)
                                            	JBSET	STATUS,2
-                                           	GOTO	_00448_DS_
+                                           	GOTO	_00405_DS_
                                            	MOVAI	0xbf
                                            	RSUBAR	(_pwr_off_cnt + 1)
                                            	JBSET	STATUS,2
-                                           	GOTO	_00448_DS_
+                                           	GOTO	_00405_DS_
                                            	MOVAI	0x20
                                            	RSUBAR	_pwr_off_cnt
-                                           _00448_DS_
+                                           _00405_DS_
                                            	JBCLR	STATUS,0
-                                           	GOTO	_00408_DS_
+                                           	GOTO	_00365_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
                                            ;;unsigned compare: left < lit(0xC8=200), size=1
-                                           _00418_DS_
-                                           ;	.line	545; "MC30P6280.c"	into_low_power_cnt >= (u8)((u16)2000 / 10)) {
+                                           _00375_DS_
+                                           ;	.line	566; "MC30P6280.c"	into_low_power_cnt >= (u8)((u16)2000 / 10)) {
                                            	MOVAI	0xc8
                                            	RSUBAR	_into_low_power_cnt
                                            	JBSET	STATUS,0
-                                           	GOTO	_00420_DS_
+                                           	GOTO	_00377_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
-                                           _00408_DS_
-                                           ;	.line	560; "MC30P6280.c"	GIE = 0; // 关闭总中断
+                                           _00365_DS_
+                                           ;	.line	581; "MC30P6280.c"	GIE = 0; // 关闭总中断
                                            	BCLR	_INTEbits,7
-                                           ;	.line	566; "MC30P6280.c"	T0IE = 0;  // 屏蔽 timer0 中断
+                                           ;	.line	587; "MC30P6280.c"	T0IE = 0;  // 屏蔽 timer0 中断
                                            	BCLR	_INTEbits,0
-                                           ;	.line	567; "MC30P6280.c"	T1IE = 0;  // 屏蔽 timer1 中断
+                                           ;	.line	588; "MC30P6280.c"	T1IE = 0;  // 屏蔽 timer1 中断
                                            	BCLR	_TMRCRbits,1
-                                           ;	.line	568; "MC30P6280.c"	T1EN = 0;  // 不使能定时器
+                                           ;	.line	589; "MC30P6280.c"	T1EN = 0;  // 不使能定时器
                                            	BCLR	_T1CRbits,7
-                                           ;	.line	569; "MC30P6280.c"	LVDEN = 0; // 关闭 lvd
+                                           ;	.line	590; "MC30P6280.c"	LVDEN = 0; // 关闭 lvd
                                            	BCLR	_MCRbits,0
-                                           ;	.line	572; "MC30P6280.c"	PUCON = 0xFF; // 0:Effective 1:invalid
+                                           ;	.line	593; "MC30P6280.c"	PUCON = 0xFF; // 0:Effective 1:invalid
                                            	MOVAI	0xff
                                            	MOVRA	_PUCON
-                                           ;	.line	573; "MC30P6280.c"	PDCON = 0xFF; // 0:Effective 1:invalid
+                                           ;	.line	594; "MC30P6280.c"	PDCON = 0xFF; // 0:Effective 1:invalid
                                            	MOVAI	0xff
                                            	MOVRA	_PDCON
-                                           ;	.line	574; "MC30P6280.c"	DDR1 = 0xFF;  // 1:input 0:output
+                                           ;	.line	595; "MC30P6280.c"	DDR1 = 0xFF;  // 1:input 0:output
                                            	MOVAI	0xff
                                            	MOVRA	_DDR1
-                                           ;	.line	576; "MC30P6280.c"	PUCON &= ~(0x01 << 0);             // 上拉 20K ， P10(按键检测脚)
+                                           ;	.line	597; "MC30P6280.c"	PUCON &= ~(0x01 << 0);             // 上拉 20K ， P10(按键检测脚)
                                            	BCLR	_PUCON,0
-                                           ;	.line	577; "MC30P6280.c"	PUCON &= ~(0x01 << 1 | 0x01 << 2); // LED控制 A端和B端，打开上拉
+                                           ;	.line	598; "MC30P6280.c"	PUCON &= ~(0x01 << 1 | 0x01 << 2); // LED控制 A端和B端，打开上拉
                                            	MOVAI	0xf9
                                            	ANDRA	_PUCON
-                                           ;	.line	583; "MC30P6280.c"	KBIF = 0; // 清除中断标志
+                                           ;	.line	604; "MC30P6280.c"	KBIF = 0; // 清除中断标志
                                            	BCLR	_INTFbits,1
-                                           ;	.line	584; "MC30P6280.c"	KBIE = 1; // 使能键盘中断
+                                           ;	.line	605; "MC30P6280.c"	KBIE = 1; // 使能键盘中断
                                            	BSET	_INTEbits,1
-                                           ;	.line	588; "MC30P6280.c"	P1KBCR |= (0x01 << 0) | (0x01 << 3);
+                                           ;	.line	609; "MC30P6280.c"	P1KBCR |= (0x01 << 0) | (0x01 << 3);
                                            	MOVAI	0x09
                                            	ORRA	_P1KBCR
-                                           ;	.line	596; "MC30P6280.c"	Stop();
+                                           ;	.line	617; "MC30P6280.c"	Stop();
                                            	stop	
-                                           ;	.line	597; "MC30P6280.c"	Nop();
+                                           ;	.line	618; "MC30P6280.c"	Nop();
                                            	nop	
-                                           ;	.line	598; "MC30P6280.c"	Nop();
+                                           ;	.line	619; "MC30P6280.c"	Nop();
                                            	nop	
-                                           ;	.line	601; "MC30P6280.c"	P1KBCR = 0; // 关闭所有键盘中断
+                                           ;	.line	622; "MC30P6280.c"	P1KBCR = 0; // 关闭所有键盘中断
                                            	CLRR	_P1KBCR
-                                           ;	.line	602; "MC30P6280.c"	KBIE = 0;   // 关闭键盘中断
+                                           ;	.line	623; "MC30P6280.c"	KBIE = 0;   // 关闭键盘中断
                                            	BCLR	_INTEbits,1
-                                           ;	.line	603; "MC30P6280.c"	KBIF = 0;   // 清除 键盘中断 标志
+                                           ;	.line	624; "MC30P6280.c"	KBIF = 0;   // 清除 键盘中断 标志
                                            	BCLR	_INTFbits,1
-                                           ;	.line	610; "MC30P6280.c"	Sys_Init();
+                                           ;	.line	631; "MC30P6280.c"	Sys_Init();
                                            	CALL	_Sys_Init
-                                           ;	.line	611; "MC30P6280.c"	user_init();
+                                           ;	.line	632; "MC30P6280.c"	user_init();
                                            	CALL	_user_init
-                                           ;	.line	613; "MC30P6280.c"	if (CHARGE_PIN == 0) {
+                                           ;	.line	634; "MC30P6280.c"	if (CHARGE_PIN == 0) {
                                            	JBCLR	_P1bits,3
-                                           	GOTO	_00410_DS_
-                                           ;	.line	615; "MC30P6280.c"	tmp_bat_lev = BAT_LEV_4V2; // 唤醒后，给一个默认值
+                                           	GOTO	_00367_DS_
+                                           ;	.line	636; "MC30P6280.c"	tmp_bat_lev = BAT_LEV_4V2; // 唤醒后，给一个默认值
                                            	MOVAI	0x06
                                            	MOVRA	_tmp_bat_lev
-                                           ;	.line	616; "MC30P6280.c"	bat_lev = BAT_LEV_4V2;
+                                           ;	.line	637; "MC30P6280.c"	bat_lev = BAT_LEV_4V2;
                                            	MOVAI	0x06
                                            	MOVRA	_bat_lev
-                                           	GOTO	_00411_DS_
-                                           _00410_DS_
-                                           ;	.line	619; "MC30P6280.c"	tmp_bat_lev = BAT_LEV_2V9;
+                                           	GOTO	_00368_DS_
+                                           _00367_DS_
+                                           ;	.line	640; "MC30P6280.c"	tmp_bat_lev = BAT_LEV_2V9;
                                            	CLRR	_tmp_bat_lev
-                                           ;	.line	620; "MC30P6280.c"	bat_lev = BAT_LEV_2V9;
+                                           ;	.line	641; "MC30P6280.c"	bat_lev = BAT_LEV_2V9;
                                            	CLRR	_bat_lev
-                                           _00411_DS_
-                                           ;	.line	627; "MC30P6280.c"	delay_ms(10);
+                                           _00368_DS_
+                                           ;	.line	649; "MC30P6280.c"	delay_ms(10);
                                            	MOVAI	0x0a
                                            	MOVRA	STK02
                                            	MOVAI	0x00
@@ -2761,20 +2714,20 @@ Address  Value    Disassembly              Source
                                            	MOVRA	STK00
                                            	MOVAI	0x00
                                            	CALL	_delay_ms
-                                           ;	.line	628; "MC30P6280.c"	flag_is_led_show_enable = 1; // 确保电池电量更新后，再使能led显示
+                                           ;	.line	650; "MC30P6280.c"	flag_is_led_show_enable = 1; // 确保电池电量更新后，再使能led显示
                                            	BSET	_flag2,0
-                                           ;	.line	631; "MC30P6280.c"	if (CHARGE_PIN == 0 && bat_lev < BAT_LEV_3V0) {
+                                           ;	.line	653; "MC30P6280.c"	if (CHARGE_PIN == 0 && bat_lev < BAT_LEV_3V0) {
                                            	JBCLR	_P1bits,3
-                                           	GOTO	_00420_DS_
+                                           	GOTO	_00377_DS_
                                            ;;unsigned compare: left < lit(0x1=1), size=1
                                            	MOVAI	0x01
                                            	RSUBAR	_bat_lev
                                            	JBSET	STATUS,0
-                                           	GOTO	_00408_DS_
+                                           	GOTO	_00365_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
-                                           ;	.line	632; "MC30P6280.c"	goto label_low_power_in;
-                                           	GOTO	_00420_DS_
-                                           ;	.line	637; "MC30P6280.c"	}
+                                           ;	.line	654; "MC30P6280.c"	goto label_low_power_in;
+                                           	GOTO	_00377_DS_
+                                           ;	.line	659; "MC30P6280.c"	}
                                            	RETURN	
                                            ; exit point of _main
                                            
@@ -2792,21 +2745,21 @@ Address  Value    Disassembly              Source
                                            ;; Starting pCode block
                                            _led_refresh	;Function start
                                            ; 2 exit points
-                                           ;	.line	518; "MC30P6280.c"	if (0 == flag_is_led_show_enable) {
+                                           ;	.line	539; "MC30P6280.c"	if (0 == flag_is_led_show_enable) {
                                            	JBCLR	_flag2,0
-                                           	GOTO	_00400_DS_
-                                           ;	.line	519; "MC30P6280.c"	return;
-                                           	GOTO	_00403_DS_
-                                           _00400_DS_
-                                           ;	.line	522; "MC30P6280.c"	led_all_off();
+                                           	GOTO	_00357_DS_
+                                           ;	.line	540; "MC30P6280.c"	return;
+                                           	GOTO	_00360_DS_
+                                           _00357_DS_
+                                           ;	.line	543; "MC30P6280.c"	led_all_off();
                                            	CALL	_led_all_off
-                                           ;	.line	524; "MC30P6280.c"	if (flag_led_4_on) {
+                                           ;	.line	545; "MC30P6280.c"	if (flag_led_4_on) {
                                            	JBSET	_flag1,5
-                                           	GOTO	_00403_DS_
-                                           ;	.line	525; "MC30P6280.c"	led4_on();
+                                           	GOTO	_00360_DS_
+                                           ;	.line	546; "MC30P6280.c"	led4_on();
                                            	CALL	_led4_on
-                                           _00403_DS_
-                                           ;	.line	527; "MC30P6280.c"	}
+                                           _00360_DS_
+                                           ;	.line	548; "MC30P6280.c"	}
                                            	RETURN	
                                            ; exit point of _led_refresh
                                            
@@ -2828,41 +2781,25 @@ Address  Value    Disassembly              Source
                                            	MOVAI	0x32
                                            	RSUBAR	_led_sta_reflash_cnt
                                            	JBSET	STATUS,0
-                                           	GOTO	_00353_DS_
+                                           	GOTO	_00351_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
                                            ;	.line	471; "MC30P6280.c"	led_sta_reflash_cnt = 0;
                                            	CLRR	_led_sta_reflash_cnt
-                                           ;	.line	473; "MC30P6280.c"	if (flag_is_in_charging) {
-                                           	JBSET	_flag1,0
-                                           	GOTO	_00350_DS_
-                                           ;	.line	475; "MC30P6280.c"	flag_led_4_on = ~flag_led_4_on;
-                                           	CLRR	r0x1020
-                                           	JBCLR	_flag1,5
-                                           	INCR	r0x1020
-                                           	COMAR	r0x1020
-                                           	MOVRA	r0x1020
-                                           	RRAR	r0x1020
-                                           	JBSET	STATUS,0
-                                           	BCLR	_flag1,5
-                                           	JBCLR	STATUS,0
-                                           	BSET	_flag1,5
-                                           	GOTO	_00353_DS_
-                                           _00350_DS_
-                                           ;	.line	476; "MC30P6280.c"	} else if (flag_is_dev_working) {
+                                           ;	.line	497; "MC30P6280.c"	if (flag_is_dev_working) {
                                            	JBSET	_flag1,6
                                            	GOTO	_00347_DS_
                                            ;;unsigned compare: left < lit(0x2=2), size=1
-                                           ;	.line	485; "MC30P6280.c"	if (bat_lev >= BAT_LEV_3V2) {
+                                           ;	.line	506; "MC30P6280.c"	if (bat_lev >= BAT_LEV_3V2) {
                                            	MOVAI	0x02
                                            	RSUBAR	_bat_lev
                                            	JBSET	STATUS,0
                                            	GOTO	_00344_DS_
                                            ;;genSkipc:3291: created from rifx:013B5EFC
-                                           ;	.line	486; "MC30P6280.c"	flag_led_4_on = 1;
+                                           ;	.line	507; "MC30P6280.c"	flag_led_4_on = 1;
                                            	BSET	_flag1,5
-                                           	GOTO	_00353_DS_
+                                           	GOTO	_00351_DS_
                                            _00344_DS_
-                                           ;	.line	490; "MC30P6280.c"	flag_led_4_on = ~flag_led_4_on;
+                                           ;	.line	511; "MC30P6280.c"	flag_led_4_on = ~flag_led_4_on;
                                            	CLRR	r0x1020
                                            	JBCLR	_flag1,5
                                            	INCR	r0x1020
@@ -2873,43 +2810,12 @@ Address  Value    Disassembly              Source
                                            	BCLR	_flag1,5
                                            	JBCLR	STATUS,0
                                            	BSET	_flag1,5
-                                           	GOTO	_00353_DS_
+                                           	GOTO	_00351_DS_
                                            _00347_DS_
-                                           ;	.line	494; "MC30P6280.c"	flag_led_4_on = 0;
+                                           ;	.line	515; "MC30P6280.c"	flag_led_4_on = 0;
                                            	BCLR	_flag1,5
-                                           _00353_DS_
-                                           ;	.line	498; "MC30P6280.c"	if (flag_is_in_charging) {
-                                           	JBSET	_flag1,0
-                                           	GOTO	_00361_DS_
-                                           ;;unsigned compare: left < lit(0x6=6), size=1
-                                           ;	.line	500; "MC30P6280.c"	if (bat_lev >= BAT_LEV_4V2) {
-                                           	MOVAI	0x06
-                                           	RSUBAR	_bat_lev
-                                           	JBSET	STATUS,0
-                                           	GOTO	_00361_DS_
-                                           ;;genSkipc:3291: created from rifx:013B5EFC
-                                           ;;unsigned compare: left < lit(0x8CA0=36000), size=2
-                                           ;	.line	501; "MC30P6280.c"	if (charge_fully_cnt < (u16)(((u32)6 * 60 * 1000) / 10)) {
-                                           	MOVAI	0x8c
-                                           	RSUBAR	(_charge_fully_cnt + 1)
-                                           	JBSET	STATUS,2
-                                           	GOTO	_00394_DS_
-                                           	MOVAI	0xa0
-                                           	RSUBAR	_charge_fully_cnt
-                                           _00394_DS_
-                                           	JBCLR	STATUS,0
-                                           	GOTO	_00355_DS_
-                                           ;;genSkipc:3291: created from rifx:013B5EFC
-                                           ;	.line	504; "MC30P6280.c"	charge_fully_cnt++;
-                                           	INCR	_charge_fully_cnt
-                                           	JBCLR	STATUS,2
-                                           	INCR	(_charge_fully_cnt + 1)
-                                           	GOTO	_00361_DS_
-                                           _00355_DS_
-                                           ;	.line	506; "MC30P6280.c"	flag_led_4_on = 1;
-                                           	BSET	_flag1,5
-                                           _00361_DS_
-                                           ;	.line	510; "MC30P6280.c"	}
+                                           _00351_DS_
+                                           ;	.line	531; "MC30P6280.c"	}
                                            	RETURN	
                                            ; exit point of _led_status_handle
                                            
@@ -3080,7 +2986,7 @@ Address  Value    Disassembly              Source
                                            	JBCLR	STATUS,2
                                            	GOTO	_00281_DS_
                                            ;;unsigned compare: left < lit(0x1E=30), size=1
-                                           ;	.line	442; "MC30P6280.c"	if (click_delay_cnt >= KEY_CLICK_DELAY_TIME) { 
+                                           ;	.line	442; "MC30P6280.c"	if (click_delay_cnt >= KEY_CLICK_DELAY_TIME) {
                                            	MOVAI	0x1e
                                            	RSUBAR	_click_delay_cnt
                                            	JBSET	STATUS,0
@@ -3686,7 +3592,7 @@ Address  Value    Disassembly              Source
                                            
                                            
                                            ;	code size estimation:
-                                           ;	  636+    0 =   636 instructions ( 1272 byte)
+                                           ;	  604+    0 =   604 instructions ( 1208 byte)
                                            
                                            	end
 
@@ -3716,10 +3622,9 @@ MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
 0500 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
 0540 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
 0580 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
-05C0 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
-0600 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXX-------- ----------------
+05C0 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXX-------- ----------------
 
 All other memory blocks unused.
 
-Program Memory Words Used:   788
+Program Memory Words Used:   756
 

@@ -13,6 +13,7 @@ void timer0_init(void)
         1u / 125KHz == 8us
         8us * 125次计数 == 1ms
     */
+    // T0CR = 0x04; // 时钟为CPU时钟，定时器 32 分频
     T0CR = 0x05; // 时钟为CPU时钟，定时器 64 分频
     T0CNT = (u8)(255 - 125);
     T0IE = 1;
